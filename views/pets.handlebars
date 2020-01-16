@@ -4,14 +4,14 @@
       <div class="card mt-4">
         <div class="card-body">
           <div class="row">
-            <img class="img-fluid rounded mx-auto d-block" id="petProfilePic" src="{{imgURL}}">
+            <img class="img-fluid rounded mx-auto d-block" id="petProfilePic" src={{pet.photos.[0].full}}>
           </div>
-          <h1 id="pet-name">{{name}}</h1>
+          <h1 id=" pet-name">{{pet.name}}</h1>
           <hr>
-          <p>Young</p>
-          <p>Sacramento, CA, 95826</p>
+          <p>{{pet.age}}</p>
+          <p>{{pet.contact.address.city}}, {{pet.contact.address.state}}, {{pet.contact.address.postcode}}</p>
 
-          <p>Sniffles is just the sweetest fucking thing. She may have a runny nose all the time but that doesn't stop her from living life to the fullest.</p>
+          <p>{{pet.description}}</p>
           <button>Add to your List +</button>
           <button>Contact Shelter</button>
         </div>
