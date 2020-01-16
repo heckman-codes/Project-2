@@ -1,3 +1,60 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+footer {
+  margin: 25px auto 0;
+  background-color: #b93145;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 50vh 0 50vh #b93145;
+}
+
+#navHead {
+  background-color: #b93145;
+}
+
+#footerLogo {
+  font-family: 'Mrs Sheppards', cursive;
+}
+
+h3 {
+  color: white;
+}
+
+#logoType {
+  font-family: 'Mrs Sheppards', cursive;
+}
+
+.nav-item {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+}
+
+button {
+  background-color: #b93145;
+  color: white;
+  text-transform: uppercase;
+  border-style: none;
+  border-radius: 10px;
+  padding: 7px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 10px;
+}
+
+#pet-name {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
+  margin: 20px 0 0 0;
+}
+
+hr {
+  margin: 10px 0
+}
+
+p {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+}
