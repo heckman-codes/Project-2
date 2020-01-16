@@ -1,61 +1,65 @@
-module.exports = function (sequelize, Sequelize) {
-    let SavedPets = sequelize.define("SavedPets", {
-        animalID: Sequelize.INTEGER(25),
+
+module.exports = function (sequelize, DataTypes) {
+    let SavedPets = sequelize.define('SavedPets', {
+        animalID: {
+            type: DataTypes.INTEGER,
+        },
+
         petName: {
-            type: Sequelize.STRING(100),
+            type: DataTypes.STRING,
             allowNull: false,
         },
 
         breedPrimary: {
-            Sequelize.STRING(100),
+            type: DataTypes.STRING,
             allowNull: false,
         },
 
         petDescription: {
-            Sequelize.STRING(100),
+            type: DataTypes.STRING,
             allowNull: false,
         },
         petPhotoURL: {
-            Sequelize.STRING(225),
+            type: DataTypes.STRING,
         },
 
         locationAddress: {
-            Sequelize.STRING(225),
+            type: DataTypes.STRING,
             allowNull: false,
         },
 
         locationCity: {
-            Sequelize.STRING(100),
+            type: DataTypes.STRING,
             allowNull: false,
         },
 
         locationState: {
-            Sequelize.STRING(100),
+            type: DataTypes.STRING,
             allowNull: false,
         },
 
         locationPostCode: {
-            Sequelize.STRING(100),
+            type: DataTypes.STRING,
             allowNull: false,
         },
 
         locationCountry: {
-            Sequelize.STRING(100),
+            type: DataTypes.STRING,
             allowNull: false,
         },
 
         locationEmail: {
-            Sequelize.STRING(100),
+            type: DataTypes.STRING,
             allowNull: false,
         },
 
         locationPhoneNumber: {
-            Sequelize.STRING(100),
+            type: DataTypes.STRING,
             allowNull: false,
         },
 
         distanceMiles: {
-            Sequelize.STRING(100),
+            type: DataTypes.STRING,
             allowNull: false,
         },
 
