@@ -2,7 +2,7 @@ module.exports = function (sequelize, Sequelize) {
     let SavedPets = sequelize.define("SavedPets", {
         animalID: Sequelize.INTEGER(25),
         petName: {
-            Sequelize.STRING(100),
+            type: Sequelize.STRING(100),
             allowNull: false,
         },
 
