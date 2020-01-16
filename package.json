@@ -11,10 +11,13 @@
   },
   "license": "ISC",
   "dependencies": {
+    "@petfinder/petfinder-js": "^1.0.6",
     "dotenv": "^8.0.0",
     "express": "^4.17.0",
     "express-handlebars": "^3.1.0",
     "mysql2": "^2.1.0",
+    "node": "^13.6.0",
+    "petfinderAPI4everybody": "github:cferdinandi/petfinderAPI4everybody",
     "sequelize": "^5.8.6"
   },
   "devDependencies": {
@@ -26,5 +29,18 @@
     "eslint-plugin-prettier": "^3.1.0",
     "mocha": "^7.0.0",
     "prettier": "^1.17.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heckman-codes/Project-2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/heckman-codes/Project-2/issues"
+  },
+  "homepage": "https://github.com/heckman-codes/Project-2#readme"
 }
