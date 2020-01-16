@@ -1,8 +1,9 @@
-module.exports = function (sequelize, Sequelize) {
+module.exports = function (sequelize, DataTypes) {
     let User = sequelize.define("User", {
         // Giving the User model a name of type STRING
+
         firstName: {
-            Sequelize.STRING(50),
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: {
@@ -10,9 +11,9 @@ module.exports = function (sequelize, Sequelize) {
                     msg: 'A first name is required.'
                 }
             },
-
+        },
             lastName: {
-                Sequelize.STRING(50),
+                type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
                     len: {
@@ -20,42 +21,41 @@ module.exports = function (sequelize, Sequelize) {
                         msg: 'A last name is required.'
                     }
                 },
-
-                photoURL: Sequelize.STRING,
+            },
+            photoURL: {
+                type: DataTypes.STRING,
+            },
 
                 email: {
-                    type: Sequelize.STRING(100),
+                    type: DataTypes.STRING,
                     allowNull: false,
                     unique: true,
                     validate: {
                         isEmail: {
                             msg: 'An email is required.'
                         },
-                        isUnique: connection.validateIsUnique(
-                            'email',
-                            'This email already exists.'
-                        )
+                        // isUnique: connection.validateIsUnique(
+                        //     'email',
+                        //     'This email already exists.'
+                        // )
                     }
                 },
 
                 password: {
-                    type: Sequelize.STRING,
+                    type: DataTypes.STRING,
                     allowNull: false
-                },
-                {
-            instanceMethods: {
-                generateHash: function (password) {
-                    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
-                },
-                validPassword: function (password) {
-                    return bcrypt.compareSync(password, this.password)
-                }
-            }
+                }, 
+            //     instanceMethods: {
+            //     generateHash: function (password) {
+            //         return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
+            //     },
+            //     validPassword: function (password) {
+            //         return bcrypt.compareSync(password, this.password)
+            //     }
+            // }
         });
 
     User.sync();
-
-    export default User;
 
     User.associate = function (models) {
         // Associating User with Posts
