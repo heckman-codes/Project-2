@@ -3,12 +3,17 @@
 }
 
 footer {
-  margin: 25px auto 0;
+  margin: 0 auto;
   background-color: #b93145;
   width: 100%;
   padding: 10px;
   text-align: center;
   box-shadow: 0 50vh 0 50vh #b93145;
+}
+
+.white-text {
+  color: white;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 #navHead {
@@ -19,8 +24,13 @@ footer {
   font-family: 'Mrs Sheppards', cursive;
 }
 
+h2 {
+  font-size: 3rem;
+}
+
 h3 {
   color: white;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 #logoType {
@@ -50,6 +60,10 @@ button {
   margin: 20px 0 0 0;
 }
 
+#pet-card {
+  margin-bottom: 1.5rem ;
+}
+
 #petProfilePic {
   height: 500;
   width: 500;
@@ -63,4 +77,23 @@ hr {
 p {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
+}
+
+#home {
+  height: 600px;
+  background-image: url("../img/wagsplashimage.jpg");
+  background-size: auto;
+}
+
+.width {
+  width: 30%;
+  display: inline-block;
+}
+
+.center-splash {
+  margin: auto;
+}
+
+.user-icon {
+    color: white;
 }
