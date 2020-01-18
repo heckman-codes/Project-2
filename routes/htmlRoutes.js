@@ -1,11 +1,11 @@
 // REQUIRED
-  // for keys/id/secrets
-  require("dotenv").config();
-  let keys = require("../config/keys");
-  var db = require("../models");
-  const petfinder = require("@petfinder/petfinder-js");
+// for keys/id/secrets
+require("dotenv").config();
+let keys = require("../config/keys");
+var db = require("../models");
+const petfinder = require("@petfinder/petfinder-js");
 
-const client = new petfinder.Client(keys.petfinderClient)
+const client = new petfinder.Client(keys.petfinderClient);
 
 module.exports = function(app) {
   // Load index page
@@ -32,6 +32,9 @@ module.exports = function(app) {
           pet: resp.data.animals[Math.floor(Math.random() * 10)]
         });
         // res.json(resp.data.animals[0].photos[0].large);
+      })
+      .catch(err => {
+        console.log(err);
       });
   });
 
