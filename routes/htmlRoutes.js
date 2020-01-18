@@ -11,16 +11,8 @@ module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
     // db.Example.findAll({}).then(function (dbExamples) {
-<<<<<<< HEAD
-      res.render("index", {
-        // msg: "Welcome!",
-        // examples: JSON.parse(JSON.stringify(dbExamples))
-      // });
-    });
-=======
     res.render("index", {});
     // });
->>>>>>> 82a54ddf30b3ed6b953819dea36fdcc91c57e5b6
 
   });
 
