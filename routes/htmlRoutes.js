@@ -10,14 +10,13 @@ const client = new petfinder.Client({
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: JSON.parse(JSON.stringify(dbExamples))
-      });
+    // db.Examples.findAll({}).then(function (dbExamples) {
+    res.render("index", {
+      // msg: "Welcome!",
+      // examples: JSON.parse(JSON.stringify(dbExamples))
     });
-
   });
+
 
   // Load example page and pass in an example by id
   app.get("/adopt", function (req, res) {
