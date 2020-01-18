@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-6 offset-3">
-      <div class="card mt-4">
+      <div class="card mt-4" id="pet-card">
         <div class="card-body">
           <div class="row">
             <img class="img-fluid rounded mx-auto d-block" id="petProfilePic" src={{pet.photos.[0].full}}>
@@ -9,6 +9,7 @@
           <h1 id="pet-name">{{pet.name}}</h1>
           <hr>
           <p>{{pet.age}}</p>
+          <p>{{pet.contact.address1}}</p>
           <p>{{pet.contact.address.city}}, {{pet.contact.address.state}}, {{pet.contact.address.postcode}}</p>
 
           <p>{{pet.description}}</p>
