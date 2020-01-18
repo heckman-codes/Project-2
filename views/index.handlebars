@@ -1,20 +1,30 @@
 <div id="home">
-  <div class="container">
+  <div class="container center-splash">
     <div class="row">
       <div class="col-8 offset-2">
         {{!-- <h1>{{msg}}</h1> --}}
         <br>
-        <h2>Welcome to WAG</h2>
-        <p>Find your new best friend with the click of a button.</p>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
+        <h2 class="white-text text-center">Welcome to <span id="footerLogo">Wag</span></h2>
+        <h3 class="text-center">Find your new best friend with the click of a button.</h3>
+        <div class="form-group width">
+          <label for="exampleFormControlSelect1" class="white-text">I'm looking for a</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>Dog</option>
+            <option>Cat</option>
+          </select>
+        </div>
+        <div class="form-group width">
+          <label for="" class="white-text">Near</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>Dog</option>
+            <option>Cat</option>
+          </select>
+        </div>
+        <div class="form-group width">
+          <label for="exampleFormControlSelect1" class="white-text">I'm looking for a</label>
+          <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Area Code">
+        </div>
+        <button class="white-text">Search</button>
       </div>
     </div>
   </div>
