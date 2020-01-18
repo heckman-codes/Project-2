@@ -10,11 +10,10 @@ const client = new petfinder.Client({
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
-    // db.Examples.findAll({}).then(function (dbExamples) {
-    res.render("index", {
-      // msg: "Welcome!",
-      // examples: JSON.parse(JSON.stringify(dbExamples))
-    });
+    // db.Example.findAll({}).then(function (dbExamples) {
+    res.render("index", {});
+    // });
+
   });
 
 
@@ -22,8 +21,8 @@ module.exports = function (app) {
   app.get("/adopt", function (req, res) {
     client.animal.search({ location: 95811, type: "dog", status: "adoptable", distance: 25 })
       .then(resp => {
-        console.log(resp.data.animals[0]);
-        res.render("pets", { pet: resp.data.animals[0] });
+        console.log(resp.data.animals);
+        res.render("pets", { pet: resp.data.animals[Math.floor(Math.random() * 10)] });
         // res.json(resp.data.animals[0].photos[0].large);
       });
   });
