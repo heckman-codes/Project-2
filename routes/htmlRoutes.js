@@ -16,6 +16,7 @@ module.exports = function (app) {
 
   });
 
+
   // Load example page and pass in an example by id
   app.get("/adopt", function (req, res) {
     client.animal.search({ location: 95811, type: "dog", status: "adoptable", distance: 25 })
