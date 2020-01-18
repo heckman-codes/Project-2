@@ -8,5 +8,5 @@ const client = new petfinder.Client({
 client.animal
   .search({ location: 95811, type: "dog", status: "adoptable", distance: 25 })
   .then(resp => {
-    console.log(resp.data.animals[0]);
+    console.log(resp.data.animals[0].name);
   });
