@@ -9,23 +9,10 @@ const client = new petfinder.Client({
 
 module.exports = function(app) {
   // Load index page
-<<<<<<< HEAD
   app.get("/", function(req, res) {
-    // db.Example.findAll({}).then(function (dbExamples) {
-    res.render(
-      "index"
-      // {
-      // msg: "Welcome!",
-      // examples: JSON.parse(JSON.stringify(dbExamples))
-      // }
-    );
-=======
-  app.get("/", function (req, res) {
     // db.Example.findAll({}).then(function (dbExamples) {
     res.render("index", {});
     // });
-
->>>>>>> 82a54ddf30b3ed6b953819dea36fdcc91c57e5b6
   });
 
   // });
@@ -41,7 +28,9 @@ module.exports = function(app) {
       })
       .then(resp => {
         console.log(resp.data.animals);
-        res.render("pets", { pet: resp.data.animals[Math.floor(Math.random() * 10)] });
+        res.render("pets", {
+          pet: resp.data.animals[Math.floor(Math.random() * 10)]
+        });
         // res.json(resp.data.animals[0].photos[0].large);
       });
   });
