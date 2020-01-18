@@ -10,11 +10,11 @@ const client = new petfinder.Client({
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
+    // db.Example.findAll({}).then(function (dbExamples) {
       res.render("index", {
-        msg: "Welcome!",
-        examples: JSON.parse(JSON.stringify(dbExamples))
-      });
+        // msg: "Welcome!",
+        // examples: JSON.parse(JSON.stringify(dbExamples))
+      // });
     });
 
   });
