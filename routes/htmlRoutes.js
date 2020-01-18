@@ -4,8 +4,12 @@ require("dotenv").config();
 let keys = require("../config/keys");
 var db = require("../models");
 const petfinder = require("@petfinder/petfinder-js");
-
-const client = new petfinder.Client(keys.petfinderClient);
+// var petfinder = require("@petfinder/petfinder-js");(keys.petfinderClient.id, keys.petfinderClient.secret);
+var client = new petfinder.Client({
+  apiKey: keys.petfinderClient.id,
+  secret: keys.petfinderClient.secret
+});
+// const client =
 
 module.exports = function(app) {
   // Load index page
