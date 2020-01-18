@@ -1,5 +1,5 @@
 {
-  "name": "node-handlebars-boilerplate",
+  "name": "handlebars-boilerplate",
   "version": "1.0.0",
   "description": "Project 2 Starter",
   "main": "server.js",
@@ -48,7 +48,10 @@
     "type": "git",
     "url": "git+https://github.com/heckman-codes/Project-2.git"
   },
+<<<<<<< HEAD
   "keywords": [],
+=======
+>>>>>>> 98e2b1ea6accfef2f4b223369bf21842f47295fd
   "author": "",
   "bugs": {
     "url": "https://github.com/heckman-codes/Project-2/issues"
