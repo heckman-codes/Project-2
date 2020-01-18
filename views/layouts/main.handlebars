@@ -12,13 +12,14 @@
   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,400i,700|Mrs+Sheppards&display=swap"
     rel="stylesheet">
   <script src="https://kit.fontawesome.com/42c57a4b77.js" crossorigin="anonymous"></script>
+  <script src="/anime-master/lib/anime.min.js"></script>
 
-  <title>Wag</title> 
+  <title>Wag</title>
 </head>
 
 <body>
   <nav class="navbar navbar-dark navbar-expand-lg" id="navHead">
-    <div class="container">
+    <div class="container" id="container">
       <a class="navbar-brand" id="logoType" href="/">Wag</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +54,6 @@
   <footer>
     <h3 id="footer"> &copy; <span id="footerLogo">Wag</span></h3>
   </footer>
-
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -63,6 +63,18 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/swipe-listener@latest/dist/swipe-listener.min.js" type="text/javascript">
+  </script>
+
+  {{!-- <script>
+    var container = document.querySelector('#container');
+    var listener = SwipeListener(container);
+    container.addEventListener('swipe', function (e) {
+      console.log(e.detail);
+    });
+  </script> --}}
+  <script src="/js/swipe.js"></script>
+
 
 </body>
 
