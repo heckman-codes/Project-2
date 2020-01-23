@@ -1,10 +1,14 @@
-/* eslint-disable prettier/prettier */
-var db = require("../models");
-const petfinder = require("@petfinder/petfinder-js");
+// REQUIRED
 
-const client = new petfinder.Client({
-  apiKey: "EleUQUs9t8vtF8lIm7K3whOXqDumhTIw2Wo9r4uwxWFTnXP1VQ",
-  secret: "1f7G1WupvYNO51Jf5vyueYCqvyOb3LjzoP7voWXs"
+// for keys/id/secrets
+require("dotenv").config();
+let keys = require("../config/keys");
+var db = require("../models");
+let petfinder = require("@petfinder/petfinder-js");
+
+let client = new petfinder.Client({
+  apiKey: keys.id,
+  secret: keys.secret
 });
 
 module.exports = function (app) {
@@ -13,21 +17,58 @@ module.exports = function (app) {
     // db.Example.findAll({}).then(function (dbExamples) {
     res.render("index", {});
     // });
-
   });
 
+  // });
+
   // Load example page and pass in an example by id
-  app.get("/adopt", function (req, res) {
-    client.animal.search({ location: 95811, type: "dog", status: "adoptable", distance: 25 })
+  // app.get("/adopt", function (req, res) {
+  //   client.animal
+  //     .search({
+  //       location: 95811,
+  //       type: "dog",
+  //       status: "adoptable",
+  //       distance: 25
+  //     })
+  //     .then(resp => {
+  //       console.log(resp.data.animals);
+  //       res.render("pets", {
+  //         pet: resp.data.animals[Math.floor(Math.random() * 10)]
+  //       });
+  //       // res.json(resp.data.animals[0].photos[0].large);
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // });
+
+  app.get("/adopt/:animal/:location/:distance", function (req, res) {
+    client.animal
+      .search({
+        location: req.params.location,
+        type: req.params.animal,
+        status: "adoptable",
+        distance: req.params.distance
+      })
       .then(resp => {
         console.log(resp.data.animals);
-        res.render("pets", { pet: resp.data.animals[Math.floor(Math.random() * 10)] });
-        // res.json(resp.data.animals[0].photos[0].large);
+        var randomNum = Math.floor(Math.random() * 10);
+        res.render("pets", {
+          pet: resp.data.animals[randomNum],
+          petDesc: resp.data.animals[randomNum].description
+        });
+      })
+      .catch(err => {
+        console.log(err);
       });
   });
 
   app.get("/post", function (req, res) {
     res.render("post", {});
+  });
+
+  app.get("/signup", function (req, res) {
+    res.render("signup", {});
   });
 
   app.get("/account", function (req, res) {

@@ -1,30 +1,61 @@
 <div class="container">
-  <div class="row">
-    <div class="col-8 offset-2">
+  <div class="row justify-content-md-center">
+    <div class="col-9">
+      <div class="card mt-4" id="sign-in-div">
+        <div class="card-body">
+          <h1 class="card-title">Please Log in to Post or Save pets later</h1>
+          <div class="row">
+            <div id="login-div" class="col-12">
+              <div class="form-group">
+                <label for="username-input">Username</label>
+                <input type="text" id="username-input" class="form-control" aria-describedby="example-text" placeholder="Username" name="username-input">
+              </div>
+              <div class="form-group">
+                <label for="password-input">Password</label>
+                <input type="text" id="password-input" class="form-control" aria-describedby="example-text" placeholder="Password" name="password-input">
+              </div>
+              <button class="big-button" id="sign-in-button">Log In</button>
+              <p>Don't have an account?</p>
+              <button class="big-button mr-auto" href="/signup">Sign Up</button>
+            </div>
+            {{!-- <div id="google-sign-in" class="col-4">
+              <h3 class="text-center"><strong> or <br> Sign in with:</strong></h3>
+              <button id="google-login-button" class="mx-auto d-block"><i class="fab fa-google"></i> | Google </button>
+            </div> --}}
+          </div>
+        </div>
+      </div>
       <div class="card mt-4">
         <div class="card-body">
-          <img class="img-fluid">
-          <h5 class="card-title">If Account, Show profile</h5>
-          <h5 class="card-title">Else, Show Sign-Up Login Deets</h5>
-          <p>
-            Hello <strong> Account Name</strong> !</p>
-          <p>
-            <strong>Location</strong>: {{example.text}}</p>
-          <p>
-            <strong>Description:</strong> {{example.description}}</p>
-          <a>Contact Shelter</a>
+          <img class="img-fluid" id="profile-pic" src="http://placehold.it/100x100">
+          <h4 class="inline">Welcome back, <strong> UserName</strong></h4>
         </div>
-        <ul>
-          <li>Pet One</li>
-          <li>Pet Two</li>
-          <li>Pet Three</li>
-          <li>Pet Four</li>
-          <li>Pet Five</li>
-        </ul>
-      </div>
-      <div class="row">
-        <button>Left</button>
-        <button>Right</button>
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <h4>Potential Adoptions</h4>
+              <hr>
+              <ul id="adoption-list">
+                <li>Pet One</li>
+                <li>Pet Two</li>
+                <li>Pet Three</li>
+                <li>Pet Four</li>
+                <li>Pet Five</li>
+              </ul>
+            </div>
+            <div class="col-6">
+              <h4>Potential Adoptees</h4>
+              <hr>
+              <ul id="adoptee-list">
+                <li>Pet One</li>
+                <li>Pet Two</li>
+                <li>Pet Three</li>
+                <li>Pet Four</li>
+                <li>Pet Five</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

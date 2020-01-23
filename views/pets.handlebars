@@ -1,21 +1,27 @@
-<div class="container">
+<div class="container" id="petContainer">
   <div class="row">
-    <div class="col-6 offset-3">
-      <div class="card mt-4" id="pet-card">
-        <div class="card-body">
+    <div class="col-6 mx-auto d-block">
+      <div class="card mt-4 mb-0" id="pet-card">
+        <div class="card-body noselect">
           <div class="row">
             <img class="img-fluid rounded mx-auto d-block" id="petProfilePic" src={{pet.photos.[0].full}}>
           </div>
           <h1 id="pet-name">{{pet.name}}</h1>
           <hr>
-          <p>{{pet.age}}</p>
           <p>{{pet.contact.address1}}</p>
           <p>{{pet.contact.address.city}}, {{pet.contact.address.state}}, {{pet.contact.address.postcode}}</p>
-
-          <p>{{pet.description}}</p>
+          <p>{{pet.age}}</p>
+          <p>{{petDesc}}</p>
           <button>Add to your List +</button>
           <button>Contact Shelter</button>
         </div>
+      </div>
+      <div class="row mb-4" id="buttonRow">
+        {{!-- <div class="container"> --}}
+        <button class="col-4 button-bar">Previous</button>
+        <button class="col-4 button-bar" id="love-button">HEART EYES</button>
+        <button class="col-4 button-bar">Next</button>
+        {{!-- </div> --}}
       </div>
     </div>
   </div>
