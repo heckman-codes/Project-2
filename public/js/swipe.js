@@ -25,6 +25,9 @@ function dragStart(e) {
     initialY = e.touches[0].clientY - yOffset;
   } else {
     console.log("life is a drag");
+    console.log(currentX);
+    console.log(initialX);
+    console.log(xOffset);
     active = true;
     initialX = e.clientX - xOffset;
     initialY = e.clientY - yOffset;
@@ -37,8 +40,15 @@ function dragStart(e) {
 }
 
 function dragEnd(e) {
+  console.log("go hoooome");
+  initialX = 0;
   currentX = 0;
+  xOffset = 0;
+  initialY = 0;
   currentY = 0;
+  yOffset = 0;
+  setTranslate(currentX, currentY, dragItem);
+
   active = false;
 }
 
@@ -50,6 +60,7 @@ function drag(e) {
       currentX = e.touches[0].clientX - initialX;
       currentY = e.touches[0].clientY - initialY;
     } else {
+      console.log("prodigal son");
       currentX = e.clientX - initialX;
       currentY = e.clientY - initialY;
     }
