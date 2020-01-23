@@ -1,3 +1,71 @@
+// var dragItem = document.querySelector("#pet-card");
+// var dragBox = document.querySelector("#petContainer");
+
+// var active = false;
+// var currentX;
+// var currentY;
+// var initialX;
+// var initialY;
+// var xOffset = 0;
+// var yOffset = 0;
+
+// dragBox.addEventListener("touchstart", dragStart, false);
+// dragBox.addEventListener("touchend", dragEnd, false);
+// dragBox.addEventListener("touchmove", drag, false);
+
+// dragBox.addEventListener("mousedown", dragStart, false);
+// dragBox.addEventListener("mouseup", dragEnd, false);
+// dragBox.addEventListener("mousemove", drag, false);
+
+// function dragStart(e) {
+//   if (e.type === "touchstart") {
+//     console.log("lets drag");
+//     console.log(e);
+//     initialX = e.touches[0].clientX - xOffset;
+//     initialY = e.touches[0].clientY - yOffset;
+//   } else {
+//     console.log("life is a drag");
+
+//     initialX = e.clientX - xOffset;
+//     initialY = e.clientY - yOffset;
+//   }
+
+//   if (e.target === dragItem) {
+//     console.log("it's true!!!");
+//     active = true;
+//   }
+// }
+
+// function dragEnd(e) {
+//   initialX = currentX;
+//   initialY = currentY;
+
+//   active = false;
+// }
+
+// function drag(e) {
+//   if (active) {
+//     e.preventDefault();
+//     console.log("lets go");
+//     if (e.type === "touchmove") {
+//       currentX = e.touches[0].clientX - initialX;
+//       currentY = e.touches[0].clientY - initialY;
+//     } else {
+//       currentX = e.clientX - initialX;
+//       currentY = e.clientY - initialY;
+//     }
+
+//     xOffset = currentX;
+//     yOffset = currentY;
+
+//     setTranslate(currentX, currentY, dragItem);
+//   }
+// }
+
+// function setTranslate(xPos, yPos, el) {
+//   el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+// }
+
 var container = document.querySelector("#petContainer");
 var listener = SwipeListener(container);
 console.log("AAAAHHH");
@@ -11,7 +79,7 @@ setTimeout(() => {
       var directions = e.detail.directions;
       var x = e.detail.x;
       var y = e.detail.y;
-      var swipeDistance = $(window).width();
+      var swipeDistance = $(window).width() / 1.5;
 
       if (directions.left) {
         console.log("Swiped left.");

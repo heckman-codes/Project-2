@@ -60,8 +60,19 @@ button {
   margin: 20px 0 0 0;
 }
 
+#petContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 7px;
+  touch-action: none;
+}
+
 #pet-card {
   margin-bottom: 1.5rem;
+  touch-action: none;
+  user-select: none;
 }
 
 #petProfilePic {
