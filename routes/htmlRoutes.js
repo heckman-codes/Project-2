@@ -19,29 +19,6 @@ module.exports = function (app) {
     // });
   });
 
-  // });
-
-  // Load example page and pass in an example by id
-  // app.get("/adopt", function (req, res) {
-  //   client.animal
-  //     .search({
-  //       location: 95811,
-  //       type: "dog",
-  //       status: "adoptable",
-  //       distance: 25
-  //     })
-  //     .then(resp => {
-  //       console.log(resp.data.animals);
-  //       res.render("pets", {
-  //         pet: resp.data.animals[Math.floor(Math.random() * 10)]
-  //       });
-  //       // res.json(resp.data.animals[0].photos[0].large);
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // });
-
   app.get("/adopt/:animal/:location/:distance", function (req, res) {
     client.animal
       .search({

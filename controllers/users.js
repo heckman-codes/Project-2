@@ -4,18 +4,18 @@ const bcrypt = require("bcryptjs");
 const { secret } = require("../config/keys");
 
 router.get("/signup", (req, res) => {
-    res.render("signup", {});
+    res.render("signup", {}); 
 });
 
-router.post("/user", (req, res) => {
-    User.findOne({ where: { username: req.body.username } }).then(user => {
+router.post("/signup", (req, res) => {
+    User.findOne({ where: { userEmail: req.body.userEmail } }).then(user => {
         console.log(user);
         if (user) {
-            let error = "Username exists in database.";
+            let error = "userEmail exists in database.";
             return res.status(400).json(error);
         } else {
             const newUser = new User({
-                username: req.body.username,
+                userEmail: req.body.userEmail,
                 password: req.body.password
             });
             bcrypt.genSalt(10, (err, salt) => {
@@ -28,10 +28,10 @@ router.post("/user", (req, res) => {
                         .then(user => {
                             const payload = {
                                 id: user.id,
-                                username: user.username
+                                userEmail: user.userEmail
                             };
                             req.session.userId = payload.id;
-                            req.session.username = payload.username;
+                            req.session.userEmail = payload.userEmail;
                             res.send(200);
                         });
                 })
@@ -45,12 +45,12 @@ router.get("/login", (req, res) => {
     res.render("login", {});
 });
 
-router.post("/login", (req, res) => {
-    const username = req.body.username;
+router.post("/account", (req, res) => {
+    const userEmail = req.body.userEmail;
     const password = req.body.password;
-    User.findOne({ where: { username } }).then(user => {
+    User.findOne({ where: { userEmail } }).then(user => {
         if (!user) {
-            errors.username = "No Account Found";
+            errors.userEmail = "No Account Found";
             return res.status(404).json(errors);
         }
         bcrypt.compare(password, user.password).then(isMatch => {
@@ -58,10 +58,10 @@ router.post("/login", (req, res) => {
                 console.log("in")
                 const payload = {
                     id: user.id,
-                    username: user.username
+                    userEmail: user.userEmail
                 };
                 req.session.userId = payload.id;
-                req.session.username = payload.username;
+                req.session.userEmail = payload.userEmail;
                 res.status(200).json(payload.id);
             } else {
                 let errors = {};

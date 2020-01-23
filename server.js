@@ -11,9 +11,11 @@ var db = require("./models")
 
 var app = express();
 var sess = {
-  secret: "Session Secret Is Secret",
+  secret: process.env.AUTHSECRET,
   cookie: {}
 };
+
+console.log(sess)
 
 if (app.get("env") === "production") {
   app.set("trust proxy", 1); // trust first proxy
