@@ -7,7 +7,11 @@
     "start": "node server.js",
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
+<<<<<<< HEAD
     "test": "npm run lint && cross-env NODE_ENV=test mocha --reporter spec --exit"
+=======
+    "test": "npm run lint && cross-env NODE_ENV=test mocha -u bdd --reporter spec --exit"
+>>>>>>> 4fd6ca9c18bdd1daf64cb020d063337043e084b1
   },
   "license": "ISC",
   "dependencies": {
@@ -16,6 +20,7 @@
     "dotenv": "^8.0.0",
     "express": "^4.17.0",
     "express-handlebars": "^3.1.0",
+    "express-session": "^1.17.0",
     "lodash-es": "^4.17.15",
     "lodash-move": "^1.1.1",
     "mysql2": "^2.1.0",
