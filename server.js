@@ -38,6 +38,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
+
+// ======= Unblock when ready to test! ===========
 // require("./controllers")(app)
 require("./routes/apiRoutes")(app); 
 require("./routes/htmlRoutes")(app);
