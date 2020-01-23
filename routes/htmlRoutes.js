@@ -7,8 +7,8 @@ var db = require("../models");
 let petfinder = require("@petfinder/petfinder-js");
 
 let client = new petfinder.Client({
-  apiKey: keys.petfinderClient.id,
-  secret: keys.petfinderClient.secret
+  apiKey: keys.id,
+  secret: keys.secret
 });
 
 module.exports = function (app) {
