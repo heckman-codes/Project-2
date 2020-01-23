@@ -85,20 +85,7 @@ button {
   margin: 20px 0 0 0;
 }
 
-<<<<<<< HEAD
-#petContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: 7px;
-  touch-action: none;
-}
-
-#pet-card {
-=======
 .card {
->>>>>>> 4fd6ca9c18bdd1daf64cb020d063337043e084b1
   margin-bottom: 1.5rem;
   touch-action: none;
   user-select: none;
@@ -172,7 +159,7 @@ p {
   margin-top: 0;
 }
 
-#love-button{
+#love-button {
   border-radius: none;
   border-left: 1px white solid;
   border-right: 1px white solid;
