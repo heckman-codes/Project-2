@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { User } = require("../models");
 const bcrypt = require("bcryptjs");
-const { authSecret } = require("../config/keys");
+const { secret } = require("../config/keys");
 
 router.get("/signup", (req, res) => {
     res.render("signup", {});
