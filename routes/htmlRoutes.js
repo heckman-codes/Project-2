@@ -67,6 +67,10 @@ module.exports = function (app) {
     res.render("post", {});
   });
 
+  app.get("/signup", function (req, res) {
+    res.render("signup", {});
+  });
+
   app.get("/account", function (req, res) {
     res.render("account", {});
   });
