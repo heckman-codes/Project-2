@@ -1,11 +1,12 @@
 <div id="home">
   <div class="container center-splash">
-    <div class="row">
+    <div class="row" id="search-section">
       <div class="col-xs-10 col-s-8 mx-auto d-block">
         {{!-- <h1>{{msg}}</h1> --}}
         <br>
         <br>
         <br>
+        {{#if userLoggedIn}}
         <h2 class="white-text text-center">Welcome to <span id="footerLogo">Wag</span></h2>
         <h3 class="text-center white-text">Find your new best friend with the click of a button</h3>
         <div class="form-group width">
@@ -30,21 +31,25 @@
         <button class="white-text submit big-button vertical-center mx-auto d-block" class="submit" type="submit" name="submit">Search</button>
       </div>
     </div>
+    {{else}}
     <br><br>
-    <div class="row">
+    <div class="row login-signup-splash">
       <div class="col-xs-12 col-s-8 mx-auto">
-        <h4 class="text-center white-text">Want to Post or Save for later?</h4>
+        <h4 class="text-center white-text">Want to Search and Save for later?</h4>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12 col-s-8 mx-auto text-center">
-        <button class="inline big-button white-text">Log In</button>
+        <a href="/account"><button class="inline big-button white-text">Log In</button></a>
         <h4 class="inline white-text"> OR </h4>
         <a href="/signup"><button class="inline big-button">Sign Up</button></a>
       </div>
     </div>
   </div>
+  {{/if}}
 </div>
+<br>
+<br>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>

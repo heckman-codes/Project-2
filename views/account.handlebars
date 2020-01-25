@@ -1,39 +1,8 @@
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-xs-12 col-s-9">
-      <div class="card mt-4" id="sign-in-div">
-        <div class="card-body">
-          <h1 class="card-title">Please Log in to Post or Save pets later</h1>
-          <div class="row">
-            <div id="login-div" class="col-12">
-              <div class="form-group">
-                <label for="username-input">Username</label>
-                <input type="text" id="username-input" class="form-control" aria-describedby="example-text" placeholder="Username" name="username-input">
-              </div>
-              <div class="form-group">
-                <label for="password-input">Password</label>
-                <input type="text" id="password-input" class="form-control" aria-describedby="example-text" placeholder="Password" name="password-input">
-              </div>
-              <div class="row">
-                <div class="col-4">
-                  <button class="big-button" id="sign-in-button">Log In</button>
-                </div>
-                <div class="col-4">
-                  <p>Don't have an account?</p>
-                </div>
-                <div class="col-4">
-                  <button class="big-button mr-auto" href="/signup">Sign Up</button>
-                </div>
-              </div>
-            </div>
-            {{!-- <div id="google-sign-in" class="col-4">
-              <h3 class="text-center"><strong> or <br> Sign in with:</strong></h3>
-              <button id="google-login-button" class="mx-auto d-block"><i class="fab fa-google"></i> | Google </button>
-            </div> --}}
-          </div>
-        </div>
-      </div>
-      <div class="card mt-4">
+      {{#if userLoggedIn }}
+      <div class="card mt-4" id="account-div">
         <div class="card-body">
           <img class="img-fluid" id="profile-pic" src="http://placehold.it/100x100">
           <h4 class="inline">Welcome back, <strong> UserName</strong></h4>
@@ -65,6 +34,40 @@
           </div>
         </div>
       </div>
+      {{else}}
+      <div class="card mt-4" id="sign-in-div">
+        <div class="card-body">
+          <h1 class="card-title">Please Log in to Post or Save pets later</h1>
+          <div class="row">
+            <div id="login-div" class="col-12">
+              <div class="form-group">
+                <label for="username-input">Username</label>
+                <input type="text" id="username-input" class="form-control" aria-describedby="example-text" placeholder="Username" name="username-input">
+              </div>
+              <div class="form-group">
+                <label for="password-input">Password</label>
+                <input type="text" id="password-input" class="form-control" aria-describedby="example-text" placeholder="Password" name="password-input">
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <button class="big-button" id="sign-in-button">Log In</button>
+                </div>
+                <div class="col-4">
+                  <p>Don't have an account?</p>
+                </div>
+                <div class="col-4">
+                  <a href="/signup"><button class="big-button mr-auto">Sign Up</button></a>
+                </div>
+              </div>
+            </div>
+            {{!-- <div id="google-sign-in" class="col-4">
+              <h3 class="text-center"><strong> or <br> Sign in with:</strong></h3>
+              <button id="google-login-button" class="mx-auto d-block"><i class="fab fa-google"></i> | Google </button>
+            </div> --}}
+          </div>
+        </div>
+      </div>
+      {{/if}}
     </div>
   </div>
 </div>
