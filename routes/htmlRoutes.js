@@ -7,6 +7,9 @@ let keys = require("../config/keys");
 var db = require("../models");
 let petfinder = require("@petfinder/petfinder-js");
 
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
 let client = new petfinder.Client({
   apiKey: keys.id,
   secret: keys.secret
@@ -19,6 +22,9 @@ module.exports = function (app) {
     res.render("index", {});
     // });
   });
+
+  const token = jwt.sign({ id: user.id }, process.env.APP_SECRET);
+
 
   app.get("/adopt/:animal/:location/:distance/:petnum", function (req, res) {
     client.animal
