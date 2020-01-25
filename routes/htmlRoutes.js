@@ -19,7 +19,9 @@ module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
     // db.Example.findAll({}).then(function (dbExamples) {
-    res.render("index", {});
+    res.render("index", {
+      userLoggedIn: false
+    });
     // });
   });
 
@@ -69,7 +71,7 @@ module.exports = function (app) {
   app.get("/account", function (req, res) {
     res.render("account", {});
 
-    if(req.user) {
+    if (req.user) {
 
     }
   });
