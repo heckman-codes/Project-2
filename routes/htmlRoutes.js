@@ -19,14 +19,7 @@ module.exports = function (app) {
     // });
   });
 
-<<<<<<< HEAD
-  // });
-
-  // Load example page and pass in an example by id
-  app.get("/adopt", function (req, res) {
-=======
   app.get("/adopt/:animal/:location/:distance", function (req, res) {
->>>>>>> f2acc113098e719265b11e04a83e3ee748a2d537
     client.animal
       .search({
         location: req.params.location,
