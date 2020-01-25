@@ -37,6 +37,11 @@
             <a class="nav-link" href="/account" tabindex="-1" aria-disabled="true">Account
               <i class="far fa-user user-icon"></i></a>
           </li>
+          {{#if userLoggedIn}}
+          <li>
+            <a class="white-text" id="logout-btn">Log Out</a>
+          </li>
+          {{/if}}
         </ul>
       </div>
     </div>

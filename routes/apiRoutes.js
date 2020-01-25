@@ -17,6 +17,12 @@ module.exports = function (app) {
     });
   });
 
+  app.post("/api/postpet", function (req, res) {
+    db.SavedPets.create(req.body).then(function (SavedPetResult) {
+      res.json(SavedPetResult);
+    })
+  })
+
   app.get("/api/adopt/:animal/:location/:distance/:petnum", function (req, res) {
     console.log(req.params);
     client.animal

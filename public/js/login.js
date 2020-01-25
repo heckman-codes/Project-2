@@ -17,11 +17,22 @@ $(document).ready(function () {
             method: 'POST',
             url: '/api/user/login',
             data: userData
-        }).then(function(res){
+        }).then(function (res) {
             console.log(res)
             window.location.replace("/");
         })
 
         console.log("successful")
     });
+
+    $("#logout-btn").on("click", function () {
+        $.ajax({
+            method: "GET",
+            url: "/api/user/logout"
+        }).then(function (res) {
+            console.log("successfully logged out.")
+            window.location.replace("/");
+
+        })
+    })
 });
