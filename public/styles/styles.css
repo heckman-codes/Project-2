@@ -149,6 +149,16 @@ p {
   /* border-style: none; */
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+
 #profile-pic {
   border-radius: 50px;
 }
