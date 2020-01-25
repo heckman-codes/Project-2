@@ -9,15 +9,15 @@ let client = new petfinder.Client({
   secret: keys.secret
 });
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Create a new example
-  app.get("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
+  app.get("/api/examples", function (req, res) {
+    db.Example.create(req.body).then(function (dbExample) {
       res.json(dbExample);
     });
   });
 
-  app.get("/api/adopt/:animal/:location/:distance/:petnum", function(req, res) {
+  app.get("/api/adopt/:animal/:location/:distance/:petnum", function (req, res) {
     console.log(req.params);
     client.animal
       .search({
@@ -50,15 +50,15 @@ module.exports = function(app) {
   });
 
   // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
+  app.delete("/api/examples/:id", function (req, res) {
+    db.Example.destroy({ where: { id: req.params.id } }).then(function (
       dbExample
     ) {
       res.json(dbExample);
     });
   });
   // creating a new user
-  app.post("/api/user/usercreate", async function(req, res) {
+  app.post("/api/user/usercreate", async function (req, res) {
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const email = req.body.email.toLowerCase();
@@ -85,13 +85,13 @@ module.exports = function(app) {
   });
 
   // user is logged in
-  app.get("api/user", function(req, res) {
+  app.get("api/user", function (req, res) {
     res.json(req.user);
 
     db.account({ where: (id = user) });
   });
 
-  app.post("/api/user/login", async function(req, res) {
+  app.post("/api/user/login", async function (req, res) {
     const user = await db.User.findOne({
       where: {
         email: req.body.email
@@ -120,7 +120,7 @@ module.exports = function(app) {
   });
 
   // logging out user
-  app.get("/api/user/logout", function(req, res) {
+  app.get("/api/user/logout", function (req, res) {
     res.clearCookie("token");
     res.json("LOGGED OUT USER");
   });
