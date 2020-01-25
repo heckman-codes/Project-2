@@ -1,30 +1,46 @@
 <div id="home">
   <div class="container center-splash">
     <div class="row">
-      <div class="col-8 offset-2">
+      <div class="col-8 mx-auto d-block">
         {{!-- <h1>{{msg}}</h1> --}}
         <br>
+        <br>
+        <br>
         <h2 class="white-text text-center">Welcome to <span id="footerLogo">Wag</span></h2>
-        <h3 class="text-center">Find your new best friend with the click of a button.</h3>
+        <h3 class="text-center white-text">Find your new best friend with the click of a button</h3>
         <div class="form-group width">
           <label for="exampleFormControlSelect1" class="white-text">I'm looking for a</label>
-          <select class="form-control" id="exampleFormControlSelect1">
+          <select class="form-control index-form" id="animal-type">
             <option>Dog</option>
             <option>Cat</option>
           </select>
         </div>
         <div class="form-group width">
-          <label for="" class="white-text">Near</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Dog</option>
-            <option>Cat</option>
-          </select>
+          <label for="exampleFormControlSelect1" class="white-text">Near</label>
+          <input type="text" id="area-code" class="form-control" aria-describedby="example-text" placeholder="Area Code">
         </div>
         <div class="form-group width">
-          <label for="exampleFormControlSelect1" class="white-text">I'm looking for a</label>
-          <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Area Code">
+          <label for="" class="white-text">Within</label>
+          <select class="form-control" id="distance">
+            <option>25</option>
+            <option>50</option>
+            <option>100</option>
+          </select>
         </div>
-        <button class="white-text">Search</button>
+        <button class="white-text submit big-button vertical-center mx-auto d-block" class="submit" type="submit" name="submit">Search</button>
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="col-8 offset-2">
+        <h4 class="text-center white-text">Want to Post or Save for later?</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8 offset-2 text-center">
+        <button class="inline big-button white-text">Log In</button>
+        <h4 class="inline white-text"> OR </h4>
+        <a href="/signup"><button class="inline big-button">Sign Up</a></button>
       </div>
     </div>
   </div>

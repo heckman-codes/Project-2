@@ -19,23 +19,28 @@ module.exports = function (app) {
     // });
   });
 
+<<<<<<< HEAD
   // });
 
   // Load example page and pass in an example by id
   app.get("/adopt", function (req, res) {
+=======
+  app.get("/adopt/:animal/:location/:distance", function (req, res) {
+>>>>>>> f2acc113098e719265b11e04a83e3ee748a2d537
     client.animal
       .search({
-        location: 95811,
-        type: "dog",
+        location: req.params.location,
+        type: req.params.animal,
         status: "adoptable",
-        distance: 25
+        distance: req.params.distance
       })
       .then(resp => {
         console.log(resp.data.animals);
+        var randomNum = Math.floor(Math.random() * 10);
         res.render("pets", {
-          pet: resp.data.animals[Math.floor(Math.random() * 10)]
+          pet: resp.data.animals[randomNum],
+          petDesc: resp.data.animals[randomNum].description
         });
-        // res.json(resp.data.animals[0].photos[0].large);
       })
       .catch(err => {
         console.log(err);
@@ -44,6 +49,10 @@ module.exports = function (app) {
 
   app.get("/post", function (req, res) {
     res.render("post", {});
+  });
+
+  app.get("/signup", function (req, res) {
+    res.render("signup", {});
   });
 
   app.get("/account", function (req, res) {
