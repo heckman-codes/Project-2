@@ -186,10 +186,12 @@ a:hover {
 #pet-card {
   touch-action: none;
   user-select: none;
+  transition-property: opacity;
+  transition-duration: 1s;
+  opacity: 1;
 }
 
 #petContainer {
-  overflow-y: hidden;
-  overflow: visible;
+  overflow-y: visible;
   touch-action: none;
 }
