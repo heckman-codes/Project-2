@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken")
 module.exports = function(app) {
 
   // creating a new user
-  app.post("/api/user/signup", async function(req, res){
+  app.post("/api/user/usercreate", async function(req, res){
     const firstName = req.body.firstName
     const lastName = req.body.lastName
     const email = req.body.email.toLowerCase();
@@ -18,7 +18,9 @@ module.exports = function(app) {
       lastName: lastName,
       email: email,
       password: password
-    }).then(function(data){})
+    })
+
+    console.log(user)
 
     // create cookie and token
     const token = jwt.sign({ id:user.id }, process.env.APP_SECRET)

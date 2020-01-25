@@ -4,6 +4,8 @@
 // ******************************************************************************
 // *** Dependencies
 // =============================================================
+const dotenv = require('dotenv');
+dotenv.config();
 const path = require("path");
 var express = require("express");
 var exphbs = require("express-handlebars");
@@ -13,8 +15,7 @@ var db = require("./models")
 
 var app = express();
 
-const dotenv = require('dotenv');
-dotenv.config();
+
 
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');

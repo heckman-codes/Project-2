@@ -22,7 +22,7 @@ $(function () {
 
         $.ajax({
             method: "POST",
-            url: "/api/user/account",
+            url: "/api/user/usercreate",
             data: userData
         })
     })
