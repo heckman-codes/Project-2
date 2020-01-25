@@ -2,6 +2,7 @@
 
 // for keys/id/secrets
 require("dotenv").config();
+let render = require("express-handlebars")
 let keys = require("../config/keys");
 var db = require("../models");
 let petfinder = require("@petfinder/petfinder-js");
@@ -61,6 +62,10 @@ module.exports = function (app) {
 
   app.get("/account", function (req, res) {
     res.render("account", {});
+
+    if(req.user) {
+
+    }
   });
 
   // Render 404 page for any unmatched routes

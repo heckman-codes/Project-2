@@ -1,6 +1,12 @@
 var db = require("../models");
+<<<<<<< HEAD
 const petfinder = require("@petfinder/petfinder-js");
 let keys = require("../config/keys");
+=======
+const bcrypt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
+
+>>>>>>> c2828f8e17d53c9aa5845f36ac95edb157d2213b
 
 let client = new petfinder.Client({
   apiKey: keys.id,
@@ -9,6 +15,7 @@ let client = new petfinder.Client({
 
 module.exports = function (app) {
 
+<<<<<<< HEAD
   // Create a new example
   app.get("/api/examples", function (req, res) {
     db.Example.create(req.body).then(function (dbExample) {
@@ -56,4 +63,74 @@ module.exports = function (app) {
       res.json(dbExample);
     });
   });
+=======
+  // creating a new user
+  app.post("/api/user/usercreate", async function(req, res){
+    const firstName = req.body.firstName
+    const lastName = req.body.lastName
+    const email = req.body.email.toLowerCase();
+    const password = await bcrypt.hash(req.body.password, 10)
+
+    // create user in database
+    const user = await db.User.create({
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password
+    })
+
+    console.log(user)
+
+    // create cookie and token
+    const token = jwt.sign({ id:user.id }, process.env.APP_SECRET)
+    res.cookie("token", token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 365,
+    })
+
+    res.json(user)
+  })
+
+  // user is logged in
+  app.get("api/user", function (req, res) {
+    res.json(req.user)
+
+    db.account({ where: id = user })
+  })
+
+  app.post("/api/user/login", async function(req, res){
+    const user = await db.User.findOne({
+      where: {
+        email: req.body.email
+      }
+    })
+
+      if(!user) {
+        res.json("NO USER FOUND WITH THAT EMAIL")
+      }
+
+      const valid = await bcrypt.compare(req.body.password, user.password)
+      console.log("Is User Valid ", valid)
+
+      if(!valid) {
+        res.json("INCORRECT PASSWORD ENTERED")
+      }
+
+      // create cookie and token
+      const token = jwt.sign({ id: user.id }, process.env.APP_SECRET)
+      res.cookie("token", token, {
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60 * 24 * 365,
+      })
+
+      res.json(user)
+  })
+
+  // logging out user
+  app.get("/api/user/logout", function(req, res) {
+    res.clearCookie("token")
+    res.json("LOGGED OUT USER")
+  })
+
+>>>>>>> c2828f8e17d53c9aa5845f36ac95edb157d2213b
 };
