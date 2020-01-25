@@ -15,8 +15,6 @@ var db = require("./models")
 
 var app = express();
 
-
-
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 

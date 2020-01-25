@@ -1,5 +1,5 @@
 <!-- Image -->
-![Example](/public/assets/img/example.jpg)
+![Dog](/public/img/wagsplashimage.jpg)
 
 # Welcome to Wag (It's Tinder for Pet Adoptions!)
 <!-- Description -->
