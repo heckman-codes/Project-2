@@ -87,6 +87,8 @@ button {
 
 .card {
   margin-bottom: 1.5rem;
+  touch-action: none;
+  user-select: none;
 }
 
 #petProfilePic {
@@ -167,7 +169,7 @@ a:hover {
   margin-top: 0;
 }
 
-#love-button{
+#love-button {
   border-radius: none;
   border-left: 1px white solid;
   border-right: 1px white solid;
@@ -179,4 +181,15 @@ a:hover {
   border-radius: 0;
   font-size: 12px;
   font-weight: bold;
+}
+
+#pet-card {
+  touch-action: none;
+  user-select: none;
+}
+
+#petContainer {
+  overflow-y: hidden;
+  overflow: visible;
+  touch-action: none;
 }
