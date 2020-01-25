@@ -1,13 +1,16 @@
 var dragItem = document.querySelector("#pet-card");
 var dragBox = document.querySelector("#petContainer");
+var swipeNum = 0;
+
+var swipeNum = 0;
 
 var active = false;
 var currentX;
-var currentY;
+// var currentY;
 var initialX;
-var initialY;
+// var initialY;
 var xOffset = 0;
-var yOffset = 0;
+// var yOffset = 0;
 
 dragBox.addEventListener("touchstart", dragStart, false);
 dragBox.addEventListener("touchend", dragEnd, false);
@@ -21,8 +24,9 @@ function dragStart(e) {
   if (e.type === "touchstart") {
     console.log("lets drag");
     console.log(e);
+    active = true;
     initialX = e.touches[0].clientX - xOffset;
-    initialY = e.touches[0].clientY - yOffset;
+    // initialY = e.touches[0].clientY - yOffset;
   } else {
     console.log("life is a drag");
     console.log(currentX);
@@ -30,7 +34,7 @@ function dragStart(e) {
     console.log(xOffset);
     active = true;
     initialX = e.clientX - xOffset;
-    initialY = e.clientY - yOffset;
+    // initialY = e.clientY - yOffset;
   }
 
   if (e.target === dragItem) {
@@ -40,14 +44,13 @@ function dragStart(e) {
 }
 
 function dragEnd(e) {
-  console.log("go hoooome");
   initialX = 0;
   currentX = 0;
   xOffset = 0;
-  initialY = 0;
-  currentY = 0;
-  yOffset = 0;
-  setTranslate(currentX, currentY, dragItem);
+  // initialY = 0;
+  // currentY = 0;
+  // yOffset = 0;
+  setTranslate(currentX, 0, dragItem);
 
   active = false;
 }
@@ -55,20 +58,18 @@ function dragEnd(e) {
 function drag(e) {
   if (active) {
     e.preventDefault();
-    console.log("lets go");
     if (e.type === "touchmove") {
       currentX = e.touches[0].clientX - initialX;
-      currentY = e.touches[0].clientY - initialY;
+      // currentY = e.touches[0].clientY - initialY;
     } else {
-      console.log("prodigal son");
       currentX = e.clientX - initialX;
-      currentY = e.clientY - initialY;
+      // currentY = e.clientY - initialY;
     }
 
     xOffset = currentX;
-    yOffset = currentY;
+    // yOffset = currentY;
 
-    setTranslate(currentX, currentY, dragItem);
+    setTranslate(currentX, 0, dragItem);
   }
 }
 
@@ -78,64 +79,147 @@ function setTranslate(xPos, yPos, el) {
 
 var container = document.querySelector("#petContainer");
 var listener = SwipeListener(container);
-console.log("AAAAHHH");
-console.log(container);
-setTimeout(() => {
-  console.log(container);
-  if (container) {
-    console.log("hi im container");
-    container.addEventListener("swipe", function(e) {
-      console.log(e);
-      var directions = e.detail.directions;
-      var x = e.detail.x;
-      var y = e.detail.y;
-      var swipeDistance = $(window).width() / 1.5;
 
-      if (directions.left) {
-        console.log("Swiped left.");
-        console.log(x);
-        anime({
-          targets: "#pet-card",
-          translateX: 0 - swipeDistance,
-          direction: "alternate"
-        });
-      }
+if (container) {
+  console.log("hi im container");
+  container.addEventListener("swipe", function(e) {
+    console.log(e);
+    var directions = e.detail.directions;
+    var x = e.detail.x;
+    var y = e.detail.y;
+    var swipeDistance = $(window).width() / 1.25;
 
-      if (directions.right) {
-        console.log("Swiped right.");
-        anime({
-          targets: "#pet-card",
-          translateX: swipeDistance,
-          direction: "alternate"
-        });
-      }
+    if (directions.left) {
+      console.log("Swiped left.");
+      document.querySelector("#pet-card").style.opacity = 0;
 
-      if (directions.top) {
-        console.log("Swiped top.");
-      }
+      anime({
+        targets: "#pet-card",
+        translateX: 0 - swipeDistance,
+        direction: "alternate"
+      });
+      var petNumber = parseInt($("#pet-number").text());
+      var petURL = new URL(window.location.href).pathname;
+      console.log(petURL);
 
-      if (directions.bottom) {
-        console.log("Swiped bottom.");
-      }
+      var URLarr = petURL.split("/");
+      var animal = URLarr[2];
+      var location = URLarr[3];
+      var distance = URLarr[4];
 
-      if (directions.top && directions.right) {
-        console.log("Swiped top-right.");
-      }
+      console.log(URLarr);
 
-      if (directions.top && directions.left) {
-        console.log("Swiped top-left.");
-      }
+      var searchQuery =
+        "/api/adopt/" +
+        animal +
+        "/" +
+        location +
+        "/" +
+        distance +
+        "/" +
+        (petNumber + 1);
+      console.log(searchQuery);
+      petNumber = parseInt(petNumber) + 1;
+      $("#pet-number").text(petNumber);
+      $.ajax({
+        type: "GET",
+        url: searchQuery,
+        headers: {
+          "Content-type": "application/json"
+        }
+      }).done(function(res) {
+        console.log(res);
+        $("#petProfilePic").attr("src", res.pet.photos[0].full);
+        $("#pet-age").text(res.pet.age);
+        $("#pet-name").text(res.pet.name);
+        $("#pet-desc").text(res.pet.description);
+        $("#pet-add1").text(res.pet.contact.address1);
+      });
 
-      if (directions.bottom && directions.right) {
-        console.log("Swiped bottom-right.");
-      }
+      swipeNum = swipeNum + 1;
+      setTimeout(() => {
+        document.querySelector("#pet-card").style.opacity = 1;
+      }, 2000);
+    }
 
-      if (directions.bottom && directions.left) {
-        console.log("Swiped bottom-left.");
-      }
+    if (directions.right) {
+      console.log("Swiped right.");
+      document.querySelector("#pet-card").style.opacity = 0;
 
-      console.log("Started horizontally at", x[0], "and ended at", x[1]);
-      console.log("Started vertically at", y[0], "and ended at", y[1]);
-    });
-  }
-}, 100);
+      anime({
+        targets: "#pet-card",
+        translateX: swipeDistance,
+        direction: "alternate"
+      });
+
+      var petNumber = parseInt($("#pet-number").text());
+      var petURL = new URL(window.location.href).pathname;
+      console.log(petURL);
+
+      var URLarr = petURL.split("/");
+      var animal = URLarr[2];
+      var location = URLarr[3];
+      var distance = URLarr[4];
+
+      console.log(URLarr);
+
+      var searchQuery =
+        "/api/adopt/" +
+        animal +
+        "/" +
+        location +
+        "/" +
+        distance +
+        "/" +
+        (petNumber + 1);
+      console.log(searchQuery);
+      petNumber = parseInt(petNumber) + 1;
+      $("#pet-number").text(petNumber);
+      $.ajax({
+        type: "GET",
+        url: searchQuery,
+        headers: {
+          "Content-type": "application/json"
+        }
+      }).done(function(res) {
+        console.log(res);
+        $("#petProfilePic").attr("src", res.pet.photos[0].full);
+        $("#pet-age").text(res.pet.age);
+        $("#pet-name").text(res.pet.name);
+        $("#pet-desc").text(res.pet.description);
+        $("#pet-add1").text(res.pet.contact.address1);
+      });
+      swipeNum = swipeNum + 1;
+      setTimeout(() => {
+        document.querySelector("#pet-card").style.opacity = 1;
+      }, 2000);
+    }
+
+    if (directions.top) {
+      console.log("Swiped top.");
+    }
+
+    if (directions.bottom) {
+      console.log("Swiped bottom.");
+    }
+
+    if (directions.top && directions.right) {
+      console.log("Swiped top-right.");
+    }
+
+    if (directions.top && directions.left) {
+      console.log("Swiped top-left.");
+    }
+
+    if (directions.bottom && directions.right) {
+      console.log("Swiped bottom-right.");
+    }
+
+    if (directions.bottom && directions.left) {
+      console.log("Swiped bottom-left.");
+    }
+
+    // console.log("Started horizontally at", x[0], "and ended at", x[1]);
+    // console.log("Started vertically at", y[0], "and ended at", y[1]);
+  });
+}
