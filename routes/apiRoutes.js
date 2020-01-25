@@ -124,4 +124,5 @@ module.exports = function (app) {
     res.clearCookie("token");
     res.json("LOGGED OUT USER");
   });
+
 };

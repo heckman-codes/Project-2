@@ -1,21 +1,27 @@
 $(document).ready(function () {
     $('#sign-in-button').on('click', function (e) {
         e.preventDefault();
-        console.log('test');
 
         const userData = {
-            email: $('#email-login-input')
+            email: $('#username-input')
                 .val()
                 .trim(),
-            password: $('#password-login-input')
+            password: $('#password-input')
                 .val()
                 .trim()
         };
+
+        console.log(userData)
 
         $.ajax({
             method: 'POST',
             url: '/api/user/login',
             data: userData
-        });
+        }).then(function(res){
+            console.log(res)
+            window.location.replace("/");
+        })
+
+        console.log("successful")
     });
 });

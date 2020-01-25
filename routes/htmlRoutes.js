@@ -6,6 +6,7 @@ let render = require("express-handlebars")
 let keys = require("../config/keys");
 var db = require("../models");
 let petfinder = require("@petfinder/petfinder-js");
+let user = require("./apiRoutes")
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -20,13 +21,10 @@ module.exports = function (app) {
   app.get("/", function (req, res) {
     // db.Example.findAll({}).then(function (dbExamples) {
     res.render("index", {
-      userLoggedIn: false
+      userLoggedIn: req.user
     });
     // });
   });
-
-  const token = jwt.sign({ id: user.id }, process.env.APP_SECRET);
-
 
   app.get("/adopt/:animal/:location/:distance/:petnum", function (req, res) {
     client.animal
@@ -71,9 +69,6 @@ module.exports = function (app) {
   app.get("/account", function (req, res) {
     res.render("account", {});
 
-    if (req.user) {
-
-    }
   });
 
   // Render 404 page for any unmatched routes
