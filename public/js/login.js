@@ -1,5 +1,3 @@
-console.log("user create button function loaded");
-
 $(function () {
     $("#signup-confirm-button").on("click", function () {
         event.preventDefault();
@@ -20,10 +18,16 @@ $(function () {
 
         console.log(userData);
 
-        $.ajax({
+        $.ajax("/api/usercreate", {
             method: "POST",
-            url: "/api/user/account",
+            url: "/api/user/usercreate",
             data: userData
-        })
+        }).then(
+            function () {
+                console.log("Successfully created ");
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
     })
 })
