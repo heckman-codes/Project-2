@@ -14,7 +14,7 @@ $(function () {
         console.log(location);
         console.log(distance);
 
-        var searchQuery = "/adopt/" + animal + "/" + location + "/" + distance;
+        var searchQuery = "/adopt/" + animal + "/" + location + "/" + distance + "/0";
 
         $.ajax(searchQuery, {
             type: "GET",

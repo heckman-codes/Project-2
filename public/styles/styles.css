@@ -92,9 +92,9 @@ button {
 }
 
 #petProfilePic {
-  height: 400px;
-  /* width: 500px; */
-  background-size: auto;
+  /* height: 400px; */
+  width: 100%;
+  background-size: cover;
   overflow: hidden;
 }
 
@@ -114,7 +114,7 @@ p {
 }
 
 .width {
-  width: 30%;
+  width: 32%;
   display: inline-block;
 }
 

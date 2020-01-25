@@ -1,10 +1,69 @@
 var db = require("../models");
+<<<<<<< HEAD
+const petfinder = require("@petfinder/petfinder-js");
+let keys = require("../config/keys");
+=======
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 
+>>>>>>> c2828f8e17d53c9aa5845f36ac95edb157d2213b
 
-module.exports = function(app) {
+let client = new petfinder.Client({
+  apiKey: keys.id,
+  secret: keys.secret
+});
 
+module.exports = function (app) {
+
+<<<<<<< HEAD
+  // Create a new example
+  app.get("/api/examples", function (req, res) {
+    db.Example.create(req.body).then(function (dbExample) {
+      res.json(dbExample);
+    });
+  });
+
+  app.get("/api/adopt/:animal/:location/:distance/:petnum", function (req, res) {
+    console.log(req.params);
+    client.animal
+      .search({
+        location: req.params.location,
+        type: req.params.animal,
+        status: "adoptable",
+        distance: req.params.distance,
+        limit: 100
+      })
+      .then(resp => {
+        var petArr = [];
+        function createPetArray() {
+          petArr.push(resp.data.animals);
+          console.log("PET ARRAY BELOW")
+          // console.log(petArr);
+        }
+
+        createPetArray();
+
+        // console.log(resp.data.animals);
+        // var randomNum = Math.floor(Math.random() * petArr[0].length);
+        res.json({
+          pet: petArr[0][req.params.petnum || 0],
+          petDesc: petArr[0][req.params.petnum || 0].description,
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
+  // Delete an example by id
+  app.delete("/api/examples/:id", function (req, res) {
+    db.Example.destroy({ where: { id: req.params.id } }).then(function (
+      dbExample
+    ) {
+      res.json(dbExample);
+    });
+  });
+=======
   // creating a new user
   app.post("/api/user/usercreate", async function(req, res){
     const firstName = req.body.firstName
@@ -73,4 +132,5 @@ module.exports = function(app) {
     res.json("LOGGED OUT USER")
   })
 
+>>>>>>> c2828f8e17d53c9aa5845f36ac95edb157d2213b
 };
