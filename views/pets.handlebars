@@ -1,17 +1,22 @@
 <div class="container" id="petContainer">
   <div class="row">
-    <div class="col-6 mx-auto d-block">
+    <div class=" col-xs-12 col-s-6 mx-auto d-block">
       <div class="card mt-4 mb-0" id="pet-card">
         <div class="card-body noselect">
           <div class="row">
+            {{#if pet.photos.[0].full}}
             <img class="img-fluid rounded mx-auto d-block" id="petProfilePic" src={{pet.photos.[0].full}}>
+            {{else}}
+            <img class="img-fluid rounded mx-auto d-block" id="petProfilePic" src="http://placehold.it/500x500">
+            {{/if}}
           </div>
           <h1 id="pet-name">{{pet.name}}</h1>
           <hr>
-          <p>{{pet.contact.address1}}</p>
-          <p>{{pet.contact.address.city}}, {{pet.contact.address.state}}, {{pet.contact.address.postcode}}</p>
-          <p>{{pet.age}}</p>
-          <p>{{petDesc}}</p>
+          <p id="pet-add1">{{pet.contact.address1}}</p>
+          <p id="pet-location">{{pet.contact.address.city}}, {{pet.contact.address.state}}, {{pet.contact.address.postcode}}</p>
+          <p id="pet-age">{{pet.age}}</p>
+          <p id="pet-desc">{{petDesc}}</p>
+          <p id="pet-number" style="display: none;">{{petnum}}</p>
           <button>Add to your List +</button>
           <button>Contact Shelter</button>
         </div>
