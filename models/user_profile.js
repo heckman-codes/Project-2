@@ -12,48 +12,38 @@ module.exports = function (sequelize, DataTypes) {
                 }
             },
         },
-            lastName: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    len: {
-                        args: [1, 50],
-                        msg: 'A last name is required.'
-                    }
-                },
+        
+        lastName: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: {
+                    args: [1, 50],
+                    msg: 'A last name is required.'
+                }
             },
-            photoURL: {
-                type: DataTypes.STRING,
-            },
+        },
+            
+        photoURL: {
+            type: DataTypes.STRING,
+        },
 
-                email: {
-                    type: DataTypes.STRING,
-                    allowNull: false,
-                    unique: true,
-                    validate: {
-                        isEmail: {
-                            msg: 'An email is required.'
-                        },
-                        // isUnique: connection.validateIsUnique(
-                        //     'email',
-                        //     'This email already exists.'
-                        // )
-                    }
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+            validate: {
+                isEmail: {
+                    msg: 'An email is required.'
                 },
+            }
+        },
 
-                password: {
-                    type: DataTypes.STRING,
-                    allowNull: false
-                }, 
-            //     instanceMethods: {
-            //     generateHash: function (password) {
-            //         return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
-            //     },
-            //     validPassword: function (password) {
-            //         return bcrypt.compareSync(password, this.password)
-            //     }
-            // }
-        });
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }, 
+    });
 
     User.sync();
 

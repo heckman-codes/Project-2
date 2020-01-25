@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-md-center">
-    <div class="col-9">
+    <div class="col-xs-12 col-s-9">
       <div class="card mt-4" id="sign-in-div">
         <div class="card-body">
           <h1 class="card-title">Please Log in to Post or Save pets later</h1>
@@ -14,9 +14,17 @@
                 <label for="password-input">Password</label>
                 <input type="text" id="password-input" class="form-control" aria-describedby="example-text" placeholder="Password" name="password-input">
               </div>
-              <button class="big-button" id="sign-in-button">Log In</button>
-              <p>Don't have an account?</p>
-              <button class="big-button mr-auto" href="/signup">Sign Up</button>
+              <div class="row">
+                <div class="col-4">
+                  <button class="big-button" id="sign-in-button">Log In</button>
+                </div>
+                <div class="col-4">
+                  <p>Don't have an account?</p>
+                </div>
+                <div class="col-4">
+                  <button class="big-button mr-auto" href="/signup">Sign Up</button>
+                </div>
+              </div>
             </div>
             {{!-- <div id="google-sign-in" class="col-4">
               <h3 class="text-center"><strong> or <br> Sign in with:</strong></h3>

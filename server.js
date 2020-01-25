@@ -1,33 +1,33 @@
-/* eslint-disable prettier/prettier */
-require("dotenv").config();
+// *****************************************************************************
+// Server.js - This file is the initial starting point for the Node/Express server.
+//
+// ******************************************************************************
+// *** Dependencies
+// =============================================================
+const dotenv = require('dotenv');
+dotenv.config();
+const path = require("path");
 var express = require("express");
-const session = require("express-session");
-
 var exphbs = require("express-handlebars");
 const sequelize = require("./config/config")
 
-var db = require("./models");
+var db = require("./models")
 
 var app = express();
-var sess = {
-  secret: "Session Secret Is Secret",
-  cookie: {}
-};
 
-if (app.get("env") === "production") {
-  app.set("trust proxy", 1); // trust first proxy
-  sess.cookie.secure = true; // serve secure cookies
-}
 
-app.use(session(sess));
+
+const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
+
+// Sets up the Express App
+// =============================================================
+var app = express();
 var PORT = process.env.PORT || 3005;
 
-// Middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-app.use(express.static("public"));
+// Requiring our models for syncing
+var db = require('./models');
 
-// Handlebars
 app.engine(
   "handlebars",
   exphbs({
@@ -36,9 +36,32 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
+// Middleware
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
+
+app.use(cookieParser());
+
+// Static directory
+app.use(express.static('public'));
+
+app.use((req, res, next) => {
+  const token = req.cookies.token;
+
+  if (token) {
+    const { id } = jwt.verify(token, process.env.APP_SECRET);
+
+    req.user = id;
+  }
+
+  next();
+});
+
 // Routes
-require("./routes/apiRoutes")(app); 
-require("./routes/htmlRoutes")(app);
+// =============================================================
+require('./routes/apiRoutes')(app);
+require('./routes/htmlRoutes')(app);
 
 var syncOptions = { force: false };
 

@@ -1,24 +1,22 @@
 {
-  "name": "handlebars-boilerplate",
+  "name": "project-2",
   "version": "1.0.0",
-  "description": "Project 2 Starter",
+  "description": "<!-- Image --> ![Example](/public/assets/img/example.jpg)",
   "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "lint": "eslint --quiet .",
-    "fix": "eslint --fix .",
-    "test": "npm run lint && cross-env NODE_ENV=test mocha -u bdd --reporter spec --exit"
+  "directories": {
+    "test": "test"
   },
-  "license": "ISC",
   "dependencies": {
     "@petfinder/petfinder-js": "^1.0.6",
     "animejs": "^3.1.0",
-    "dotenv": "^8.0.0",
-    "express": "^4.17.0",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
-    "express-session": "^1.17.0",
     "lodash-es": "^4.17.15",
     "lodash-move": "^1.1.1",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.1.0",
     "node": "^13.6.0",
     "petfinderAPI4everybody": "github:cferdinandi/petfinderAPI4everybody",
@@ -32,26 +30,20 @@
     "swipe-listener": "^1.1.0",
     "vec-la": "^1.5.0"
   },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
-    "cross-env": "^6.0.3",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.9.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "mocha": "^7.0.0",
-    "prettier": "^1.17.1"
-  },
-  "directories": {
-    "test": "test"
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/heckman-codes/Project-2.git"
   },
   "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/heckman-codes/Project-2/issues"
   },
-  "homepage": "https://github.com/heckman-codes/Project-2#readme"
+  "homepage": "https://github.com/heckman-codes/Project-2#readme",
+  "keywords": []
 }

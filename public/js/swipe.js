@@ -2,6 +2,8 @@ var dragItem = document.querySelector("#pet-card");
 var dragBox = document.querySelector("#petContainer");
 var swipeNum = 0;
 
+var swipeNum = 0;
+
 var active = false;
 var currentX;
 // var currentY;
@@ -77,6 +79,7 @@ function setTranslate(xPos, yPos, el) {
 
 var container = document.querySelector("#petContainer");
 var listener = SwipeListener(container);
+
 if (container) {
   console.log("hi im container");
   container.addEventListener("swipe", function(e) {
@@ -95,8 +98,45 @@ if (container) {
         translateX: 0 - swipeDistance,
         direction: "alternate"
       });
+      var petNumber = parseInt($("#pet-number").text());
+      var petURL = new URL(window.location.href).pathname;
+      console.log(petURL);
+
+      var URLarr = petURL.split("/");
+      var animal = URLarr[2];
+      var location = URLarr[3];
+      var distance = URLarr[4];
+
+      console.log(URLarr);
+
+      var searchQuery =
+        "/api/adopt/" +
+        animal +
+        "/" +
+        location +
+        "/" +
+        distance +
+        "/" +
+        (petNumber + 1);
+      console.log(searchQuery);
+      petNumber = parseInt(petNumber) + 1;
+      $("#pet-number").text(petNumber);
+      $.ajax({
+        type: "GET",
+        url: searchQuery,
+        headers: {
+          "Content-type": "application/json"
+        }
+      }).done(function(res) {
+        console.log(res);
+        $("#petProfilePic").attr("src", res.pet.photos[0].full);
+        $("#pet-age").text(res.pet.age);
+        $("#pet-name").text(res.pet.name);
+        $("#pet-desc").text(res.pet.description);
+        $("#pet-add1").text(res.pet.contact.address1);
+      });
+
       swipeNum = swipeNum + 1;
-      //  document.querySelector("#pet-card").style.transition = "5s";
       setTimeout(() => {
         document.querySelector("#pet-card").style.opacity = 1;
       }, 2000);
@@ -110,6 +150,44 @@ if (container) {
         targets: "#pet-card",
         translateX: swipeDistance,
         direction: "alternate"
+      });
+
+      var petNumber = parseInt($("#pet-number").text());
+      var petURL = new URL(window.location.href).pathname;
+      console.log(petURL);
+
+      var URLarr = petURL.split("/");
+      var animal = URLarr[2];
+      var location = URLarr[3];
+      var distance = URLarr[4];
+
+      console.log(URLarr);
+
+      var searchQuery =
+        "/api/adopt/" +
+        animal +
+        "/" +
+        location +
+        "/" +
+        distance +
+        "/" +
+        (petNumber + 1);
+      console.log(searchQuery);
+      petNumber = parseInt(petNumber) + 1;
+      $("#pet-number").text(petNumber);
+      $.ajax({
+        type: "GET",
+        url: searchQuery,
+        headers: {
+          "Content-type": "application/json"
+        }
+      }).done(function(res) {
+        console.log(res);
+        $("#petProfilePic").attr("src", res.pet.photos[0].full);
+        $("#pet-age").text(res.pet.age);
+        $("#pet-name").text(res.pet.name);
+        $("#pet-desc").text(res.pet.description);
+        $("#pet-add1").text(res.pet.contact.address1);
       });
       swipeNum = swipeNum + 1;
       setTimeout(() => {

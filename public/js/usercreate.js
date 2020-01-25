@@ -20,16 +20,10 @@ $(function () {
 
         console.log(userData);
 
-        $.ajax("/api/usercreate", {
-            type: "POST",
-            url: "/usercreate",
+        $.ajax({
+            method: "POST",
+            url: "/api/user/usercreate",
             data: userData
-        }).then(
-            function () {
-                console.log("Successfully created ");
-                // Reload the page to get the updated list
-                location.reload();
-            }
-        );
+        })
     })
 })
