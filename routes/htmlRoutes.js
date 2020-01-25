@@ -7,13 +7,13 @@ var db = require("../models");
 let petfinder = require("@petfinder/petfinder-js");
 
 let client = new petfinder.Client({
-  apiKey: keys.petfinderClient.id,
-  secret: keys.petfinderClient.secret
+  apiKey: keys.id,
+  secret: keys.secret
 });
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Load index page
-  app.get("/", function(req, res) {
+  app.get("/", function (req, res) {
     // db.Example.findAll({}).then(function (dbExamples) {
     res.render("index", {});
     // });
@@ -22,7 +22,7 @@ module.exports = function(app) {
   // });
 
   // Load example page and pass in an example by id
-  app.get("/adopt", function(req, res) {
+  app.get("/adopt", function (req, res) {
     client.animal
       .search({
         location: 95811,
@@ -42,16 +42,16 @@ module.exports = function(app) {
       });
   });
 
-  app.get("/post", function(req, res) {
+  app.get("/post", function (req, res) {
     res.render("post", {});
   });
 
-  app.get("/account", function(req, res) {
+  app.get("/account", function (req, res) {
     res.render("account", {});
   });
 
   // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
+  app.get("*", function (req, res) {
     res.render("404");
   });
 };
