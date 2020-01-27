@@ -18,8 +18,19 @@ module.exports = function (app) {
   });
 
   app.post("/api/postpet", function (req, res) {
+    console.log(req.body)
     db.SavedPets.create(req.body).then(function (SavedPetResult) {
       res.json(SavedPetResult);
+    })
+  })
+
+  app.delete("/api/remove/pet/:id", function (req, res) {
+    console.log(req.body)
+    db.SavedPets.destroy({
+      where: req.body
+    }
+    ).then(function (removedPet) {
+      res.json(removedPet);
     })
   })
 

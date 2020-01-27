@@ -7,6 +7,7 @@ let keys = require("../config/keys");
 var db = require("../models");
 let petfinder = require("@petfinder/petfinder-js");
 let user = require("./apiRoutes")
+let Cookies = require("js-cookie")
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -67,9 +68,28 @@ module.exports = function (app) {
   });
 
   app.get("/account", function (req, res) {
-    res.render("account", {
-      userLoggedIn: req.user
-    });
+
+    // var decoded = Cookies.get();
+    // console.log("Decoded Val: " + decoded);
+
+    if (req.user) {
+      db.SavedPets.findAll({
+        where: {
+          UserId: 5
+        }
+      }).then(function (result) {
+        // res.json(SavedPets);
+        // console.log(result.toJSON());
+        res.render("account", {
+          userLoggedIn: req.user,
+          SavedPets: result
+        });
+      });
+    } else {
+      res.render("account", {
+        userLoggedIn: req.user,
+      });
+    }
 
   });
 

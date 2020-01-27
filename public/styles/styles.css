@@ -92,8 +92,8 @@ button {
 }
 
 #petProfilePic {
-  /* height: 400px; */
-  width: 100%;
+  /* max-height: 200px; */
+  /* width: 200p; */
   background-size: cover;
   overflow: hidden;
 }
@@ -108,7 +108,7 @@ p {
 }
 
 #home {
-  height: 600px;
+  height: 1600px;
   background-image: url("../img/wagsplashimage.jpg");
   background-size: auto;
 }
@@ -163,6 +163,8 @@ a:hover {
 
 #profile-pic {
   border-radius: 50px;
+  max-width: 100px;
+  max-height: 100px;
 }
 
 #buttonRow {
@@ -184,6 +186,7 @@ a:hover {
 }
 
 #pet-card {
+  /* max-height: 80vh; */
   touch-action: none;
   user-select: none;
   transition-property: opacity;
@@ -194,4 +197,28 @@ a:hover {
 #petContainer {
   overflow-y: visible;
   touch-action: none;
+}
+
+#adoption-list {
+  padding-left: 0;
+}
+
+.pet-link {
+  text-transform: uppercase;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.remove-pet {
+  background-color: white;
+  color: maroon;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-style: none;
+  border-radius: 4px;
+  padding: 5px 5px 3px 5px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 10px;
 }

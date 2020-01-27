@@ -24,5 +24,7 @@ $(function () {
                 window.location.replace(searchQuery);
             }
         );
+
+        console.log(document.cookie);
     });
 });

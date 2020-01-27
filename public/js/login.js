@@ -35,4 +35,21 @@ $(document).ready(function () {
 
         })
     })
+
+    $(".remove-pet").on("click", function () {
+        var dataID = {
+            id: $(this).data("id")
+        }
+
+        var id = $(this).data("id");
+
+        $.ajax({
+            method: "DELETE",
+            url: "/api/remove/pet/" + id,
+            data: dataID
+        }).then(function (res) {
+            console.log("successfully removed pet.")
+            window.location.replace("/account");
+        })
+    })
 });

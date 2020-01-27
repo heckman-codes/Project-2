@@ -190,11 +190,20 @@ if (container) {
         $("#pet-add1").text(res.pet.contact.address1);
       });
 
+      // console.log(document.cookie.token);
+
       var savedPet = {
         animalID: petNumber,
         petName: $("#pet-name").text(),
-        UserId: document.cookie("token")
+        UserId: 5
       }
+
+      // function getCookie(name) {
+      //   var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+      //   return v ? v[2] : null;
+      // }
+
+      // console.log(getCookie("token"));
 
       $.ajax({
         method: "POST",
@@ -234,7 +243,7 @@ if (container) {
       console.log("Swiped bottom-left.");
     }
 
-    // console.log("Started horizontally at", x[0], "and ended at", x[1]);
+    // console.log("Starteizontally at", x[0], "and ended at", x[1]);
     // console.log("Started vertically at", y[0], "and ended at", y[1]);
   });
 }

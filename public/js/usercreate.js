@@ -24,6 +24,9 @@ $(function () {
             method: "POST",
             url: "/api/user/usercreate",
             data: userData
+        }).then(function (res) {
+            console.log(res);
+            window.location.replace("/");
         })
     })
 })

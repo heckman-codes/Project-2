@@ -1,26 +1,24 @@
 <div class="container">
-  <div class="row justify-content-md-center">
-    <div class="col-xs-12 col-s-9">
+  <div class="row">
+    <div class="col-xs-12 col-s-9 justify-content-md-center mx-auto">
       {{#if userLoggedIn }}
-      <div class="card mt-4" id="account-div">
+      <div class="card mt-4 justify-content-md-center" id="account-div">
         <div class="card-body">
-          <img class="img-fluid" id="profile-pic" src="http://placehold.it/100x100">
-          <h4 class="inline">Welcome back, <strong> UserName</strong></h4>
+          <img class="img-fluid" id="profile-pic" src="https://media-exp2.licdn.com/dms/image/C5603AQHruoixwE4VnQ/profile-displayphoto-shrink_200_200/0?e=1585785600&v=beta&t=3xb4rxppIGYu408pw9EJSuIJiJGBN1Lqv-VDtbwtohA">
+          <h4 class="inline">Welcome back, <strong>Liam</strong></h4>
         </div>
         <div class="container">
           <div class="row">
-            <div class="col-6">
+            <div class="col-12">
               <h4>Potential Adoptions</h4>
               <hr>
               <ul id="adoption-list">
-                <li>Pet One</li>
-                <li>Pet Two</li>
-                <li>Pet Three</li>
-                <li>Pet Four</li>
-                <li>Pet Five</li>
+                {{#each SavedPets}}
+                <li class="d-flex justify-content-start" style="color: black; list-style-type: none"><a class="pet-link">{{petName}}</a><button class="remove-pet ml-auto" data-id={{id}}>X</button></li>
+                {{/each}}
               </ul>
             </div>
-            <div class="col-6">
+            {{!-- <div class="col-6">
               <h4>Potential Adoptees</h4>
               <hr>
               <ul id="adoptee-list">
@@ -29,47 +27,43 @@
                 <li>Pet Three</li>
                 <li>Pet Four</li>
                 <li>Pet Five</li>
-              </ul>
-            </div>
+              </ul> --}}
           </div>
         </div>
       </div>
-      {{else}}
-      <div class="card mt-4" id="sign-in-div">
-        <div class="card-body">
-          <h1 class="card-title">Please Log in to Post or Save pets later</h1>
-          <div class="row">
-            <div id="login-div" class="col-12">
-              <div class="form-group">
-                <label for="username-input">Username</label>
-                <input type="text" id="username-input" class="form-control" aria-describedby="example-text"
-                  placeholder="Username" name="username-input">
+    </div>
+    {{else}}
+    <div class="card mt-4" id="sign-in-div">
+      <div class="card-body">
+        <h1 class="card-title">Please Log in to Post or Save pets later</h1>
+        <div class="row">
+          <div id="login-div" class="col-12">
+            <div class="form-group">
+              <label for="username-input">Username</label>
+              <input type="text" id="username-input" class="form-control" aria-describedby="example-text" placeholder="Username" name="username-input">
+            </div>
+            <div class="form-group">
+              <label for="password-input">Password</label>
+              <input type="password" id="password-input" class="form-control" aria-describedby="example-text" placeholder="Password" name="password-input">
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <button class="big-button" type="submit" id="sign-in-button">Log In</button>
               </div>
-              <div class="form-group">
-                <label for="password-input">Password</label>
-                <input type="text" id="password-input" class="form-control" aria-describedby="example-text"
-                  placeholder="Password" name="password-input">
-              </div>
-              <div class="row">
-                <div class="col-4">
-                  <button class="big-button" id="sign-in-button">Log In</button>
-                </div>
-                <div class="col-4">
-                  <p>Don't have an account?</p>
-                </div>
-                <div class="col-4">
-                  <a href="/signup"><button class="big-button mr-auto">Sign Up</button></a>
-                </div>
+              <div class="col-12">
+                <p style="margin-bottom: .5rem; margin-top: 1rem;">Don't have an account?</p>
+                <a href="/signup"><button class="big-button mr-auto">Sign Up</button></a>
               </div>
             </div>
-            {{!-- <div id="google-sign-in" class="col-4">
+          </div>
+          {{!-- <div id="google-sign-in" class="col-4">
               <h3 class="text-center"><strong> or <br> Sign in with:</strong></h3>
               <button id="google-login-button" class="mx-auto d-block"><i class="fab fa-google"></i> | Google </button>
             </div> --}}
-          </div>
         </div>
       </div>
-      {{/if}}
     </div>
+    {{/if}}
   </div>
+</div>
 </div>
