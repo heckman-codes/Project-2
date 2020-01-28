@@ -4,6 +4,7 @@ module.exports = function (sequelize, DataTypes) {
         UserId: {
             type: DataTypes.INTEGER
         },
+        
         animalID: {
             type: DataTypes.INTEGER,
         },
