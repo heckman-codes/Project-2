@@ -9,7 +9,7 @@ const sequelize = process.env.JAWSDB_URL
         process.env.DB_USERNAME,
         process.env.DB_PASSWORD,
         {
-            host: 'hngomrlb3vfq3jcr.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	',
+            host: 'hngomrlb3vfq3jcr.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
             dialect: 'mysql'
         }
     );
