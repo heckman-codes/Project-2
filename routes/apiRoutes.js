@@ -68,7 +68,7 @@ module.exports = function (app) {
       res.json(dbExample);
     });
   });
-  
+
   // creating a new user
   app.post("/api/user/usercreate", async function (req, res) {
     const firstName = req.body.firstName;
@@ -84,6 +84,9 @@ module.exports = function (app) {
       email: email,
       password: password,
       photoURL: userPhoto
+    }).then().catch(function (err) {
+      // print the error details
+      console.log(err);
     });
 
     console.log(user);
