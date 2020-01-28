@@ -83,13 +83,15 @@ module.exports = function (app) {
     const lastName = req.body.lastName;
     const email = req.body.email.toLowerCase();
     const password = await bcrypt.hash(req.body.password, 10);
+    const userPhoto = req.body.photoURL
 
     // create user in database
     const user = await db.User.create({
       firstName: firstName,
       lastName: lastName,
       email: email,
-      password: password
+      password: password,
+      photoURL: userPhoto
     });
 
     console.log(user);

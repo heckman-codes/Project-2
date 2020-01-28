@@ -69,6 +69,19 @@ module.exports = function (app) {
 
   app.get("/account", function (req, res) {
 
+    var userName;
+    var userPhoto;
+
+    db.User.findOne({
+      where: {
+        id: req.user
+      }
+    }).then(function (result) {
+      userName = result.firstName
+      userPhoto = result.photoURL
+      console.log(userPhoto);
+      console.log(userName)
+    });
 
     if (req.user) {
       db.SavedPets.findAll({
@@ -80,7 +93,9 @@ module.exports = function (app) {
         // console.log(result.toJSON());
         res.render("account", {
           userLoggedIn: req.user,
-          SavedPets: result
+          SavedPets: result,
+          userName: userName,
+          userPhoto: userPhoto
         });
       });
     } else {

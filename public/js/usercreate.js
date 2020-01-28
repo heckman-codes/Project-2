@@ -10,6 +10,7 @@ $(function () {
         var userPassword = $("#password-input").val().trim();
         var userPhoto = $("#user-photo-input").val().trim();
 
+
         var userData = {
             firstName: firstName,
             lastName: lastName,
@@ -19,6 +20,7 @@ $(function () {
         }
 
         console.log(userData);
+        console.log(userPhoto);
 
         $.ajax({
             method: "POST",

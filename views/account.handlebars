@@ -4,8 +4,8 @@
       {{#if userLoggedIn }}
       <div class="card mt-4 justify-content-md-center" id="account-div">
         <div class="card-body">
-          <img class="img-fluid" id="profile-pic" src="https://media-exp2.licdn.com/dms/image/C5603AQHruoixwE4VnQ/profile-displayphoto-shrink_200_200/0?e=1585785600&v=beta&t=3xb4rxppIGYu408pw9EJSuIJiJGBN1Lqv-VDtbwtohA">
-          <h4 class="inline">Welcome back, <strong>Liam</strong></h4>
+          <img class="img-fluid" id="profile-pic" src={{userPhoto}}>
+          <h4 class="inline">Welcome back, <strong>{{userName}}</strong></h4>
         </div>
         <div class="container">
           <div class="row">
