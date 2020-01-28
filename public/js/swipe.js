@@ -210,13 +210,6 @@ if (container) {
 
       console.log(savedPet);
 
-      // function getCookie(name) {
-      //   var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-      //   return v ? v[2] : null;
-      // }
-
-      // console.log(getCookie("token"));
-
       $.ajax({
         method: "POST",
         url: "/api/postpet",
