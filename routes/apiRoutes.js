@@ -10,12 +10,6 @@ let client = new petfinder.Client({
 });
 
 module.exports = function (app) {
-  // Create a new example
-  app.get("/api/examples", function (req, res) {
-    db.Example.create(req.body).then(function (dbExample) {
-      res.json(dbExample);
-    });
-  });
 
   app.post("/api/postpet", function (req, res) {
     console.log(req.body)
@@ -52,13 +46,10 @@ module.exports = function (app) {
         function createPetArray() {
           petArr.push(resp.data.animals);
           console.log("PET ARRAY BELOW");
-          // console.log(petArr);
         }
 
         createPetArray();
 
-        // console.log(resp.data.animals);
-        // var randomNum = Math.floor(Math.random() * petArr[0].length);
         res.json({
           pet: petArr[0][req.params.petnum || 0],
           petDesc: petArr[0][req.params.petnum || 0].description
@@ -77,6 +68,7 @@ module.exports = function (app) {
       res.json(dbExample);
     });
   });
+  
   // creating a new user
   app.post("/api/user/usercreate", async function (req, res) {
     const firstName = req.body.firstName;

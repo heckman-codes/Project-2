@@ -20,11 +20,9 @@ let client = new petfinder.Client({
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
-    // db.Example.findAll({}).then(function (dbExamples) {
     res.render("index", {
       userLoggedIn: req.user
     });
-    // });
   });
 
   app.get("/adopt/:animal/:location/:distance/:petnum", function (req, res) {
@@ -46,8 +44,6 @@ module.exports = function (app) {
 
         createPetArray();
 
-        // console.log(resp.data.animals);
-        // var randomNum = Math.floor(Math.random() * petArr[0].length);
         res.render("pets", {
           pet: petArr[0][req.params.petnum || 0],
           petDesc: petArr[0][req.params.petnum || 0].description,
@@ -89,8 +85,6 @@ module.exports = function (app) {
           UserId: req.user
         }
       }).then(function (result) {
-        // res.json(SavedPets);
-        // console.log(result.toJSON());
         res.render("account", {
           userLoggedIn: req.user,
           SavedPets: result,

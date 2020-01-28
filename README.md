@@ -2,7 +2,7 @@
 ![Dog](/public/img/wagsplashimage.jpg)
 
 # Welcome to Wag (It's Tinder for Pet Adoptions!)
-<!-- Description -->
+It's tinder for the modern millenial hopelessly looking for their dream pet! If you spend hours looking at cat and dog videos online, look no futher, WAG is for you! Our team wanted to help pets get adopted. We support no kill shelters and people and pets finding love! Every pet deserves it's person!
 
 # Wag uses the following list of example commands:
     * npm install 
