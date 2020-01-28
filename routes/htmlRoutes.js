@@ -39,7 +39,6 @@ module.exports = function (app) {
         function createPetArray() {
           petArr.push(resp.data.animals);
           console.log("PET ARRAY BELOW")
-          // console.log(petArr[0][0]);
         }
 
         createPetArray();
