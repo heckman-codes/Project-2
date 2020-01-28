@@ -19,7 +19,10 @@ module.exports = function (app) {
 
   app.post("/api/postpet", function (req, res) {
     console.log(req.body)
-    db.SavedPets.create(req.body).then(function (SavedPetResult) {
+    console.log(req.user)
+    const pet = Object.assign({}, req.body)
+    pet.UserId = req.user;
+    db.SavedPets.create(pet).then(function (SavedPetResult) {
       res.json(SavedPetResult);
     })
   })

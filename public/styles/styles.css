@@ -211,6 +211,12 @@ a:hover {
   cursor: pointer;
 }
 
+.contact-phone, .contact-email {
+  margin-top: 2rem;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1rem;
+}
+
 .remove-pet {
   background-color: white;
   color: maroon;

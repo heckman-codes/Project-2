@@ -52,4 +52,8 @@ $(document).ready(function () {
             window.location.replace("/account");
         })
     })
+
+    $("#shelter-contact-btn").on("click", function () {
+        $(".contact-container").css("display", "block");
+    })
 });

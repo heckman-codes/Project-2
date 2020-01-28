@@ -140,6 +140,9 @@ if (container) {
       setTimeout(() => {
         document.querySelector("#pet-card").style.opacity = 1;
       }, 2000);
+
+      $(".contact-container").css("display", "none");
+
     }
 
     if (directions.right) {
@@ -194,8 +197,7 @@ if (container) {
 
       var savedPet = {
         animalID: petNumber,
-        petName: $("#pet-name").text(),
-        UserId: 5
+        petName: $("#pet-name").text()
       }
 
       // function getCookie(name) {
@@ -217,6 +219,9 @@ if (container) {
       setTimeout(() => {
         document.querySelector("#pet-card").style.opacity = 1;
       }, 2000);
+
+      $(".contact-container").css("display", "none");
+
     }
 
     if (directions.top) {

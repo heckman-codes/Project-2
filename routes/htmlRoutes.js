@@ -41,7 +41,7 @@ module.exports = function (app) {
         function createPetArray() {
           petArr.push(resp.data.animals);
           console.log("PET ARRAY BELOW")
-          // console.log(petArr);
+          // console.log(petArr[0][0]);
         }
 
         createPetArray();
@@ -69,13 +69,11 @@ module.exports = function (app) {
 
   app.get("/account", function (req, res) {
 
-    // var decoded = Cookies.get();
-    // console.log("Decoded Val: " + decoded);
 
     if (req.user) {
       db.SavedPets.findAll({
         where: {
-          UserId: 5
+          UserId: req.user
         }
       }).then(function (result) {
         // res.json(SavedPets);
