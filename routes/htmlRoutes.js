@@ -20,11 +20,9 @@ let client = new petfinder.Client({
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
-    // db.Example.findAll({}).then(function (dbExamples) {
     res.render("index", {
       userLoggedIn: req.user
     });
-    // });
   });
 
   app.get("/adopt/:animal/:location/:distance/:petnum", function (req, res) {
@@ -41,13 +39,10 @@ module.exports = function (app) {
         function createPetArray() {
           petArr.push(resp.data.animals);
           console.log("PET ARRAY BELOW")
-          // console.log(petArr[0][0]);
         }
 
         createPetArray();
 
-        // console.log(resp.data.animals);
-        // var randomNum = Math.floor(Math.random() * petArr[0].length);
         res.render("pets", {
           pet: petArr[0][req.params.petnum || 0],
           petDesc: petArr[0][req.params.petnum || 0].description,
@@ -72,26 +67,23 @@ module.exports = function (app) {
     var userName;
     var userPhoto;
 
+    db.User.findOne({
+      where: {
+        id: req.user
+      }
+    }).then(function (result) {
+      userName = result.firstName
+      userPhoto = result.photoURL
+      console.log(userPhoto);
+      console.log(userName)
+    });
+
     if (req.user) {
-
-      db.User.findOne({
-        where: {
-          id: req.user
-        }
-      }).then(function (result) {
-        userName = result.firstName
-        userPhoto = result.photoURL
-        console.log(userPhoto);
-        console.log(userName);
-      });
-
       db.SavedPets.findAll({
         where: {
           UserId: req.user
         }
       }).then(function (result) {
-        // res.json(SavedPets);
-        // console.log(result.toJSON());
         res.render("account", {
           userLoggedIn: req.user,
           SavedPets: result,

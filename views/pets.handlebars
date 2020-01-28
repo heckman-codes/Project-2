@@ -16,11 +16,7 @@
           <p id="pet-location">{{pet.contact.address.city}}, {{pet.contact.address.state}}, {{pet.contact.address.postcode}}</p>
           <p id="pet-age">{{pet.age}}</p>
           <p id="pet-desc">{{petDesc}}</p>
-          {{!-- <div id="tag-container">
-            {{#each pet.tags}}
-            <div class="pet-tag">{{this}}</div>
-            {{/each}}
-          </div> --}}
+
           <p id="pet-number" style="display: none;">{{petnum}}</p>
           <button id="shelter-contact-btn" data-email={{pet.contact.email}} data-phone={{pet.contact.phone}} data-org={{pet.organization_id}}>Contact Shelter</button>
           <div class="contact-container" style="display: none;">
@@ -31,11 +27,6 @@
         </div>
       </div>
       <div class="row mb-4" id="buttonRow">
-        {{!-- <div class="container"> --}}
-        {{!-- <button class="col-4 button-bar">Previous</button>
-        <button class="col-4 button-bar" id="love-button">HEART EYES</button>
-        <button class="col-4 button-bar">Next</button> --}}
-        {{!-- </div> --}}
       </div>
     </div>
   </div>

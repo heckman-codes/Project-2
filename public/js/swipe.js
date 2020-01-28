@@ -6,11 +6,8 @@ var swipeNum = 0;
 
 var active = false;
 var currentX;
-// var currentY;
 var initialX;
-// var initialY;
 var xOffset = 0;
-// var yOffset = 0;
 
 dragBox.addEventListener("touchstart", dragStart, false);
 dragBox.addEventListener("touchend", dragEnd, false);
@@ -26,7 +23,6 @@ function dragStart(e) {
     console.log(e);
     active = true;
     initialX = e.touches[0].clientX - xOffset;
-    // initialY = e.touches[0].clientY - yOffset;
   } else {
     console.log("life is a drag");
     console.log(currentX);
@@ -34,7 +30,6 @@ function dragStart(e) {
     console.log(xOffset);
     active = true;
     initialX = e.clientX - xOffset;
-    // initialY = e.clientY - yOffset;
   }
 
   if (e.target === dragItem) {
@@ -47,9 +42,6 @@ function dragEnd(e) {
   initialX = 0;
   currentX = 0;
   xOffset = 0;
-  // initialY = 0;
-  // currentY = 0;
-  // yOffset = 0;
   setTranslate(currentX, 0, dragItem);
 
   active = false;
@@ -60,14 +52,11 @@ function drag(e) {
     e.preventDefault();
     if (e.type === "touchmove") {
       currentX = e.touches[0].clientX - initialX;
-      // currentY = e.touches[0].clientY - initialY;
     } else {
       currentX = e.clientX - initialX;
-      // currentY = e.clientY - initialY;
     }
 
     xOffset = currentX;
-    // yOffset = currentY;
 
     setTranslate(currentX, 0, dragItem);
   }
@@ -178,6 +167,7 @@ if (container) {
       console.log(searchQuery);
       petNumber = parseInt(petNumber) + 1;
       $("#pet-number").text(petNumber);
+      
       $.ajax({
         type: "GET",
         url: searchQuery,
@@ -192,8 +182,6 @@ if (container) {
         $("#pet-desc").text(res.pet.description);
         $("#pet-add1").text(res.pet.contact.address1);
       });
-
-      // console.log(document.cookie.token);
 
       var savedPet = {
         animalID: petNumber,
@@ -251,7 +239,5 @@ if (container) {
       console.log("Swiped bottom-left.");
     }
 
-    // console.log("Starteizontally at", x[0], "and ended at", x[1]);
-    // console.log("Started vertically at", y[0], "and ended at", y[1]);
   });
 }
