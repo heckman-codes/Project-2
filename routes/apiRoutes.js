@@ -147,4 +147,15 @@ module.exports = function (app) {
     res.json("LOGGED OUT USER");
   });
 
+
+  app.get("/api/review/pet/:id", function (req, res) {
+    db.SavedPets.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (petResult) {
+      console.log(petResult);
+      res.json(petResult);
+    })
+  });
 };

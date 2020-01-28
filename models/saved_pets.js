@@ -11,7 +11,40 @@ module.exports = function (sequelize, DataTypes) {
         petName: {
             type: DataTypes.STRING,
             allowNull: false,
-        }
+        },
+        petPhoto: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        petAge: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        petDesc: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        petLocation: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        petAddress: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        petEmail: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        petPhone: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        petOrgID: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+
     });
 
     SavedPets.associate = function (models) {
