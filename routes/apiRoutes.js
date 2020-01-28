@@ -113,7 +113,10 @@ module.exports = function (app) {
       where: {
         email: req.body.email
       }
-    });
+    }).then().catch(function (err) {
+      // print the error details
+      console.log(err);
+    });;
 
     if (!user) {
       res.json("NO USER FOUND WITH THAT EMAIL");
