@@ -10,59 +10,6 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
         },
 
-        breedPrimary: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-
-        petDescription: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        petPhotoURL: {
-            type: DataTypes.STRING,
-        },
-
-        locationAddress: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-
-        locationCity: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-
-        locationState: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-
-        locationPostCode: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-
-        locationCountry: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-
-        locationEmail: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-
-        locationPhoneNumber: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-
-        distanceMiles: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-
     });
 
     SavedPets.associate = function (models) {
@@ -70,6 +17,7 @@ module.exports = function (sequelize, DataTypes) {
         // A SavedPets can't be created without an User due to the foreign key constraint
         SavedPets.belongsTo(models.User, {
             foreignKey: {
+                
                 allowNull: false
             }
         });
