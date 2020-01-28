@@ -197,8 +197,18 @@ if (container) {
 
       var savedPet = {
         animalID: petNumber,
-        petName: $("#pet-name").text()
+        petName: $("#pet-name").text(),
+        petPhoto: $("#petProfilePic").attr("src"),
+        petAge: $("#pet-age").text(),
+        petDesc: $("#pet-desc").text(),
+        petLocation: $("#pet-location").text(),
+        petAddress: $("#pet-add1").text(),
+        petEmail: $(".contact-email").text(),
+        petPhone: $(".contact-phone").text(),
+        petOrgID: $(".contact-org-id").text()
       }
+
+      console.log(savedPet);
 
       // function getCookie(name) {
       //   var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');

@@ -4,7 +4,11 @@
       {{#if userLoggedIn }}
       <div class="card mt-4 justify-content-md-center" id="account-div">
         <div class="card-body">
+          {{#if userPhoto}}
           <img class="img-fluid" id="profile-pic" src={{userPhoto}}>
+          {{else}}
+          <img class="img-fluid" id="profile-pic" src="http://placehold.it/200x200">
+          {{/if}}
           <h4 class="inline">Welcome back, <strong>{{userName}}</strong></h4>
         </div>
         <div class="container">
@@ -14,7 +18,7 @@
               <hr>
               <ul id="adoption-list">
                 {{#each SavedPets}}
-                <li class="d-flex justify-content-start" style="color: black; list-style-type: none"><a class="pet-link">{{petName}}</a><button class="remove-pet ml-auto" data-id={{id}}>X</button></li>
+                <li class="d-flex justify-content-start" style="color: black; list-style-type: none"><a class="pet-link" data-toggle="modal" data-target="#petModal" data-id={{id}}>{{petName}}</a><button class="remove-pet ml-auto" data-id={{id}}>X</button></li>
                 {{/each}}
               </ul>
             </div>
@@ -65,5 +69,42 @@
     </div>
     {{/if}}
   </div>
+  <div class="modal fade" id="petModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-pet-name">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <img class="img-fluid rounded mx-auto d-block" id="modal-petProfilepic">
+          </div>
+          <hr>
+          <p id="modal-pet-add1"></p>
+          <p id="modal-pet-location"></p>
+          <p id="modal-pet-age"></p>
+          <p id="modal-pet-desc"></p>
+          {{!-- <div id="tag-container">
+            {{#each pet.tags}}
+            <div class="pet-tag">{{this}}</div>
+            {{/each}}
+          </div> --}}
+          <button id="shelter-contact-btn">Contact Shelter</button>
+          <div class="contact-container" style="display: none;">
+            <h5 id="modal-contact-email"></h5>
+            <h5 id="modal-contact-phone"></h5>
+            <p id="modal-pet-org"></p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 </div>

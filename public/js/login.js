@@ -56,4 +56,26 @@ $(document).ready(function () {
     $("#shelter-contact-btn").on("click", function () {
         $(".contact-container").css("display", "block");
     })
+
+    $(".pet-link").on("click", function () {
+
+        id = $(this).data("id");
+
+        console.log(id);
+        $.ajax({
+            method: "GET",
+            url: "/api/review/pet/" + id
+        }).then(function (res) {
+            console.log(res);
+            $("#modal-pet-name").text(res.petName)
+            $("#modal-petProfilepic").attr("src", res.petPhoto)
+            $("#modal-pet-add1").text(res.petAddress)
+            $("#modal-pet-location").text(res.petLocation)
+            $("#modal-pet-age").text(res.petAge)
+            $("#modal-pet-desx").text(res.petDesc)
+            $("#modal-contact-email").text(res.petEmail)
+            $("#modal-contact-phone").text(res.petPhone)
+            $("#modal-pet-org").text(res.petOrgID)
+        })
+    })
 });
