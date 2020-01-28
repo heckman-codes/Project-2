@@ -19,9 +19,6 @@ $(function () {
             password: userPassword
         }
 
-        console.log(userData);
-        console.log(userPhoto);
-
         $.ajax({
             method: "POST",
             url: "/api/user/usercreate",
