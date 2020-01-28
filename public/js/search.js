@@ -2,35 +2,7 @@ console.log("search.js has loaded")
 
 $('#area-code').val('95826');
 
-function userValidate() {
-    if (!valid) {
-        $(".login-signup-splash").show();
-        $("#search-section").hide();
-    } else {
-        $("#search-section").show();
-        $(".login-signup-splash").hide();
-
-    }
-}
-$(document).ready(function () {
-    console.log($.cookie("token"));
-});
-
-
-function accountPage() {
-    if (!valid) {
-        $("#login-div").show();
-        $("#account-div").hide();
-    } else {
-        $("#login-div").hide();
-        $("#account-div").show();
-    }
-}
-
-accountPage();
-
 $(function () {
-    userValidate();
 
     $(".submit").on("click", function (event) {
         event.preventDefault();
@@ -52,5 +24,7 @@ $(function () {
                 window.location.replace(searchQuery);
             }
         );
+
+        console.log(document.cookie);
     });
 });

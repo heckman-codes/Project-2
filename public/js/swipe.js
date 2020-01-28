@@ -82,7 +82,7 @@ var listener = SwipeListener(container);
 
 if (container) {
   console.log("hi im container");
-  container.addEventListener("swipe", function(e) {
+  container.addEventListener("swipe", function (e) {
     console.log(e);
     var directions = e.detail.directions;
     var x = e.detail.x;
@@ -127,7 +127,7 @@ if (container) {
         headers: {
           "Content-type": "application/json"
         }
-      }).done(function(res) {
+      }).done(function (res) {
         console.log(res);
         $("#petProfilePic").attr("src", res.pet.photos[0].full);
         $("#pet-age").text(res.pet.age);
@@ -140,6 +140,9 @@ if (container) {
       setTimeout(() => {
         document.querySelector("#pet-card").style.opacity = 1;
       }, 2000);
+
+      $(".contact-container").css("display", "none");
+
     }
 
     if (directions.right) {
@@ -181,7 +184,7 @@ if (container) {
         headers: {
           "Content-type": "application/json"
         }
-      }).done(function(res) {
+      }).done(function (res) {
         console.log(res);
         $("#petProfilePic").attr("src", res.pet.photos[0].full);
         $("#pet-age").text(res.pet.age);
@@ -189,10 +192,36 @@ if (container) {
         $("#pet-desc").text(res.pet.description);
         $("#pet-add1").text(res.pet.contact.address1);
       });
+
+      // console.log(document.cookie.token);
+
+      var savedPet = {
+        animalID: petNumber,
+        petName: $("#pet-name").text()
+      }
+
+      // function getCookie(name) {
+      //   var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+      //   return v ? v[2] : null;
+      // }
+
+      // console.log(getCookie("token"));
+
+      $.ajax({
+        method: "POST",
+        url: "/api/postpet",
+        data: savedPet
+      }).then(function (result) {
+        console.log(result);
+      })
+
       swipeNum = swipeNum + 1;
       setTimeout(() => {
         document.querySelector("#pet-card").style.opacity = 1;
       }, 2000);
+
+      $(".contact-container").css("display", "none");
+
     }
 
     if (directions.top) {
@@ -219,7 +248,7 @@ if (container) {
       console.log("Swiped bottom-left.");
     }
 
-    // console.log("Started horizontally at", x[0], "and ended at", x[1]);
+    // console.log("Starteizontally at", x[0], "and ended at", x[1]);
     // console.log("Started vertically at", y[0], "and ended at", y[1]);
   });
 }

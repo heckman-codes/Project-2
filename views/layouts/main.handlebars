@@ -37,6 +37,11 @@
             <a class="nav-link" href="/account" tabindex="-1" aria-disabled="true">Account
               <i class="far fa-user user-icon"></i></a>
           </li>
+          {{#if userLoggedIn}}
+          <li>
+            <a class="white-text" style="color: white;" id="logout-btn">Log Out</a>
+          </li>
+          {{/if}}
         </ul>
       </div>
     </div>
@@ -50,8 +55,8 @@
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/swipe-listener@latest/dist/swipe-listener.min.js" type="text/javascript">
-  </script>
+  <script src="https://unpkg.com/swipe-listener@latest/dist/swipe-listener.min.js" type="text/javascript"></script>
+
 
   {{!-- <script>
     var container = document.querySelector('#container');
@@ -64,7 +69,8 @@
   <script src="/js/search.js"></script>
   <script src="/js/usercreate.js"></script>
   <script src="/js/login.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.mjs"></script>
 
 </body>
 
