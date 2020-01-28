@@ -17,6 +17,26 @@ module.exports = function (app) {
     });
   });
 
+  app.post("/api/postpet", function (req, res) {
+    console.log(req.body)
+    console.log(req.user)
+    const pet = Object.assign({}, req.body)
+    pet.UserId = req.user;
+    db.SavedPets.create(pet).then(function (SavedPetResult) {
+      res.json(SavedPetResult);
+    })
+  })
+
+  app.delete("/api/remove/pet/:id", function (req, res) {
+    console.log(req.body)
+    db.SavedPets.destroy({
+      where: req.body
+    }
+    ).then(function (removedPet) {
+      res.json(removedPet);
+    })
+  })
+
   app.get("/api/adopt/:animal/:location/:distance/:petnum", function (req, res) {
     console.log(req.params);
     client.animal
@@ -63,13 +83,15 @@ module.exports = function (app) {
     const lastName = req.body.lastName;
     const email = req.body.email.toLowerCase();
     const password = await bcrypt.hash(req.body.password, 10);
+    const userPhoto = req.body.photoURL
 
     // create user in database
     const user = await db.User.create({
       firstName: firstName,
       lastName: lastName,
       email: email,
-      password: password
+      password: password,
+      photoURL: userPhoto
     });
 
     console.log(user);

@@ -1,6 +1,9 @@
 
 module.exports = function (sequelize, DataTypes) {
     let SavedPets = sequelize.define('SavedPets', {
+        UserId: {
+            type: DataTypes.INTEGER
+        },
         animalID: {
             type: DataTypes.INTEGER,
         },
@@ -8,8 +11,7 @@ module.exports = function (sequelize, DataTypes) {
         petName: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-
+        }
     });
 
     SavedPets.associate = function (models) {
@@ -17,7 +19,7 @@ module.exports = function (sequelize, DataTypes) {
         // A SavedPets can't be created without an User due to the foreign key constraint
         SavedPets.belongsTo(models.User, {
             foreignKey: {
-                
+                name: "UserId",
                 allowNull: false
             }
         });

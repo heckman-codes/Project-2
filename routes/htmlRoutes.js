@@ -7,6 +7,7 @@ let keys = require("../config/keys");
 var db = require("../models");
 let petfinder = require("@petfinder/petfinder-js");
 let user = require("./apiRoutes")
+let Cookies = require("js-cookie")
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -40,7 +41,7 @@ module.exports = function (app) {
         function createPetArray() {
           petArr.push(resp.data.animals);
           console.log("PET ARRAY BELOW")
-          // console.log(petArr);
+          // console.log(petArr[0][0]);
         }
 
         createPetArray();
@@ -67,7 +68,41 @@ module.exports = function (app) {
   });
 
   app.get("/account", function (req, res) {
-    res.render("account", {});
+
+    var userName;
+    var userPhoto;
+
+    db.User.findOne({
+      where: {
+        id: req.user
+      }
+    }).then(function (result) {
+      userName = result.firstName
+      userPhoto = result.photoURL
+      console.log(userPhoto);
+      console.log(userName)
+    });
+
+    if (req.user) {
+      db.SavedPets.findAll({
+        where: {
+          UserId: req.user
+        }
+      }).then(function (result) {
+        // res.json(SavedPets);
+        // console.log(result.toJSON());
+        res.render("account", {
+          userLoggedIn: req.user,
+          SavedPets: result,
+          userName: userName,
+          userPhoto: userPhoto
+        });
+      });
+    } else {
+      res.render("account", {
+        userLoggedIn: req.user,
+      });
+    }
 
   });
 
