@@ -67,16 +67,18 @@ module.exports = function (app) {
     var userName;
     var userPhoto;
 
-    db.User.findOne({
-      where: {
-        id: req.user
-      }
-    }).then(function (result) {
-      userName = result.firstName
-      userPhoto = result.photoURL
-      console.log(userPhoto);
-      console.log(userName)
-    });
+    if (req.user) {
+      db.User.findOne({
+        where: {
+          id: req.user
+        }
+      }).then(function (result) {
+        userName = result.firstName
+        userPhoto = result.photoURL
+        console.log(userPhoto);
+        console.log(userName)
+      });
+    }
 
     if (req.user) {
       db.SavedPets.findAll({
